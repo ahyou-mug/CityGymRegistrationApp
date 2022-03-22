@@ -36,5 +36,10 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void checkBox8_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
