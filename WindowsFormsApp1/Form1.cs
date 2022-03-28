@@ -91,5 +91,10 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void groupBox9_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
