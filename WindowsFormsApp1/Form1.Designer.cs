@@ -31,77 +31,79 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.addNum = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
+            this.postcode = new System.Windows.Forms.TextBox();
+            this.addState = new System.Windows.Forms.MaskedTextBox();
+            this.addCity = new System.Windows.Forms.MaskedTextBox();
+            this.addStreet = new System.Windows.Forms.MaskedTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.MembershipType = new System.Windows.Forms.GroupBox();
+            this.Premium = new System.Windows.Forms.RadioButton();
+            this.Regular = new System.Windows.Forms.RadioButton();
+            this.Basic = new System.Windows.Forms.RadioButton();
+            this.payFreq = new System.Windows.Forms.GroupBox();
+            this.annually = new System.Windows.Forms.RadioButton();
+            this.monthly = new System.Windows.Forms.RadioButton();
+            this.fortnightly = new System.Windows.Forms.RadioButton();
+            this.weekly = new System.Windows.Forms.RadioButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
-            this.radioButton11 = new System.Windows.Forms.RadioButton();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.radioButton12 = new System.Windows.Forms.RadioButton();
-            this.radioButton13 = new System.Windows.Forms.RadioButton();
-            this.radioButton14 = new System.Windows.Forms.RadioButton();
-            this.radioButton15 = new System.Windows.Forms.RadioButton();
+            this.lname = new System.Windows.Forms.TextBox();
+            this.fname = new System.Windows.Forms.TextBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.display1 = new System.Windows.Forms.RichTextBox();
+            this.payMethod = new System.Windows.Forms.GroupBox();
+            this.Cash = new System.Windows.Forms.RadioButton();
+            this.BT = new System.Windows.Forms.RadioButton();
+            this.CC = new System.Windows.Forms.RadioButton();
+            this.DD = new System.Windows.Forms.RadioButton();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.emRel = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.emNum = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.emCon = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.phone = new System.Windows.Forms.TextBox();
+            this.Duration = new System.Windows.Forms.GroupBox();
+            this.twoyear = new System.Windows.Forms.RadioButton();
+            this.oneyear = new System.Windows.Forms.RadioButton();
+            this.half = new System.Windows.Forms.RadioButton();
+            this.quarter = new System.Windows.Forms.RadioButton();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.birthday = new System.Windows.Forms.DateTimePicker();
+            this.extras = new System.Windows.Forms.GroupBox();
+            this.PT = new System.Windows.Forms.CheckBox();
+            this.alltime = new System.Windows.Forms.CheckBox();
+            this.Diet = new System.Windows.Forms.CheckBox();
+            this.vids = new System.Windows.Forms.CheckBox();
+            this.cancel = new System.Windows.Forms.Button();
+            this.confirm = new System.Windows.Forms.Button();
+            this.calculate = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.MembershipType.SuspendLayout();
+            this.payFreq.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox9.SuspendLayout();
             this.groupBox10.SuspendLayout();
+            this.payMethod.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.Duration.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.extras.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 32);
+            this.label1.Location = new System.Drawing.Point(2, 26);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 17);
+            this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "First Name:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -109,632 +111,664 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(205, 32);
+            this.label2.Location = new System.Drawing.Point(154, 26);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 17);
+            this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Last Name:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // textBox3
+            // addNum
             // 
-            this.textBox3.Location = new System.Drawing.Point(5, 49);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(61, 22);
-            this.textBox3.TabIndex = 7;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.addNum.Location = new System.Drawing.Point(4, 40);
+            this.addNum.Margin = new System.Windows.Forms.Padding(2);
+            this.addNum.Name = "addNum";
+            this.addNum.Size = new System.Drawing.Size(47, 20);
+            this.addNum.TabIndex = 7;
+            this.addNum.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 30);
+            this.label5.Location = new System.Drawing.Point(4, 24);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 17);
+            this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 9;
             this.label5.Text = "Number:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(75, 30);
+            this.label6.Location = new System.Drawing.Point(56, 24);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 17);
+            this.label6.Size = new System.Drawing.Size(69, 13);
             this.label6.TabIndex = 10;
             this.label6.Text = "Street Name:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 74);
+            this.label7.Location = new System.Drawing.Point(2, 60);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 17);
+            this.label7.Size = new System.Drawing.Size(37, 13);
             this.label7.TabIndex = 11;
             this.label7.Text = "Town:";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.maskedTextBox5);
-            this.groupBox1.Controls.Add(this.maskedTextBox4);
-            this.groupBox1.Controls.Add(this.maskedTextBox3);
+            this.groupBox1.Controls.Add(this.postcode);
+            this.groupBox1.Controls.Add(this.addState);
+            this.groupBox1.Controls.Add(this.addCity);
+            this.groupBox1.Controls.Add(this.addStreet);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Location = new System.Drawing.Point(1, 84);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Controls.Add(this.addNum);
+            this.groupBox1.Location = new System.Drawing.Point(1, 68);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(301, 183);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(226, 149);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Address";
             // 
-            // textBox2
+            // postcode
             // 
-            this.textBox2.Location = new System.Drawing.Point(184, 143);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 20;
+            this.postcode.Location = new System.Drawing.Point(138, 116);
+            this.postcode.Margin = new System.Windows.Forms.Padding(2);
+            this.postcode.Name = "postcode";
+            this.postcode.Size = new System.Drawing.Size(76, 20);
+            this.postcode.TabIndex = 20;
             // 
-            // maskedTextBox5
+            // addState
             // 
-            this.maskedTextBox5.Location = new System.Drawing.Point(5, 143);
-            this.maskedTextBox5.Name = "maskedTextBox5";
-            this.maskedTextBox5.Size = new System.Drawing.Size(161, 22);
-            this.maskedTextBox5.TabIndex = 19;
+            this.addState.Location = new System.Drawing.Point(4, 116);
+            this.addState.Margin = new System.Windows.Forms.Padding(2);
+            this.addState.Name = "addState";
+            this.addState.Size = new System.Drawing.Size(122, 20);
+            this.addState.TabIndex = 19;
             // 
-            // maskedTextBox4
+            // addCity
             // 
-            this.maskedTextBox4.Location = new System.Drawing.Point(5, 97);
-            this.maskedTextBox4.Name = "maskedTextBox4";
-            this.maskedTextBox4.Size = new System.Drawing.Size(279, 22);
-            this.maskedTextBox4.TabIndex = 18;
+            this.addCity.Location = new System.Drawing.Point(4, 79);
+            this.addCity.Margin = new System.Windows.Forms.Padding(2);
+            this.addCity.Name = "addCity";
+            this.addCity.Size = new System.Drawing.Size(210, 20);
+            this.addCity.TabIndex = 18;
             // 
-            // maskedTextBox3
+            // addStreet
             // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(72, 49);
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(212, 22);
-            this.maskedTextBox3.TabIndex = 17;
+            this.addStreet.Location = new System.Drawing.Point(54, 40);
+            this.addStreet.Margin = new System.Windows.Forms.Padding(2);
+            this.addStreet.Name = "addStreet";
+            this.addStreet.Size = new System.Drawing.Size(160, 20);
+            this.addStreet.TabIndex = 17;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(181, 122);
+            this.label8.Location = new System.Drawing.Point(136, 99);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(77, 17);
+            this.label8.Size = new System.Drawing.Size(59, 13);
             this.label8.TabIndex = 15;
             this.label8.Text = "Post Code:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(2, 122);
+            this.label4.Location = new System.Drawing.Point(2, 99);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 17);
+            this.label4.Size = new System.Drawing.Size(72, 13);
             this.label4.TabIndex = 13;
             this.label4.Text = "State/District:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(429, 32);
+            this.label9.Location = new System.Drawing.Point(322, 26);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(107, 17);
+            this.label9.Size = new System.Drawing.Size(81, 13);
             this.label9.TabIndex = 14;
             this.label9.Text = "Mobile Number:";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
-            // groupBox2
+            // MembershipType
             // 
-            this.groupBox2.Controls.Add(this.radioButton3);
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton1);
-            this.groupBox2.Location = new System.Drawing.Point(7, 278);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(295, 135);
-            this.groupBox2.TabIndex = 16;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Membership Type:";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            this.MembershipType.Controls.Add(this.Premium);
+            this.MembershipType.Controls.Add(this.Regular);
+            this.MembershipType.Controls.Add(this.Basic);
+            this.MembershipType.Location = new System.Drawing.Point(5, 226);
+            this.MembershipType.Margin = new System.Windows.Forms.Padding(2);
+            this.MembershipType.Name = "MembershipType";
+            this.MembershipType.Padding = new System.Windows.Forms.Padding(2);
+            this.MembershipType.Size = new System.Drawing.Size(221, 110);
+            this.MembershipType.TabIndex = 16;
+            this.MembershipType.TabStop = false;
+            this.MembershipType.Text = "Membership Type:";
+            this.MembershipType.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
-            // radioButton3
+            // Premium
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(7, 78);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(158, 21);
-            this.radioButton3.TabIndex = 5;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Premium ($20/week)";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.Premium.AutoSize = true;
+            this.Premium.Location = new System.Drawing.Point(5, 63);
+            this.Premium.Margin = new System.Windows.Forms.Padding(2);
+            this.Premium.Name = "Premium";
+            this.Premium.Size = new System.Drawing.Size(123, 17);
+            this.Premium.TabIndex = 5;
+            this.Premium.TabStop = true;
+            this.Premium.Text = "Premium ($20/week)";
+            this.Premium.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // Regular
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(7, 49);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(153, 21);
-            this.radioButton2.TabIndex = 4;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Regular ($15/week)";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.Regular.AutoSize = true;
+            this.Regular.Location = new System.Drawing.Point(5, 40);
+            this.Regular.Margin = new System.Windows.Forms.Padding(2);
+            this.Regular.Name = "Regular";
+            this.Regular.Size = new System.Drawing.Size(120, 17);
+            this.Regular.TabIndex = 4;
+            this.Regular.TabStop = true;
+            this.Regular.Text = "Regular ($15/week)";
+            this.Regular.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // Basic
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(7, 22);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(137, 21);
-            this.radioButton1.TabIndex = 3;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Basic ($10/week)";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.Basic.AutoSize = true;
+            this.Basic.Location = new System.Drawing.Point(5, 18);
+            this.Basic.Margin = new System.Windows.Forms.Padding(2);
+            this.Basic.Name = "Basic";
+            this.Basic.Size = new System.Drawing.Size(109, 17);
+            this.Basic.TabIndex = 3;
+            this.Basic.TabStop = true;
+            this.Basic.Text = "Basic ($10/week)";
+            this.Basic.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
+            // payFreq
             // 
-            this.groupBox3.Controls.Add(this.radioButton7);
-            this.groupBox3.Controls.Add(this.radioButton6);
-            this.groupBox3.Controls.Add(this.radioButton5);
-            this.groupBox3.Controls.Add(this.radioButton4);
-            this.groupBox3.Location = new System.Drawing.Point(486, 278);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(147, 135);
-            this.groupBox3.TabIndex = 17;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Payment:";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            this.payFreq.Controls.Add(this.annually);
+            this.payFreq.Controls.Add(this.monthly);
+            this.payFreq.Controls.Add(this.fortnightly);
+            this.payFreq.Controls.Add(this.weekly);
+            this.payFreq.Location = new System.Drawing.Point(364, 226);
+            this.payFreq.Margin = new System.Windows.Forms.Padding(2);
+            this.payFreq.Name = "payFreq";
+            this.payFreq.Padding = new System.Windows.Forms.Padding(2);
+            this.payFreq.Size = new System.Drawing.Size(110, 110);
+            this.payFreq.TabIndex = 17;
+            this.payFreq.TabStop = false;
+            this.payFreq.Text = "Payment:";
+            this.payFreq.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
-            // radioButton7
+            // annually
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(7, 106);
-            this.radioButton7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(73, 21);
-            this.radioButton7.TabIndex = 3;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Annual";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.annually.AutoSize = true;
+            this.annually.Location = new System.Drawing.Point(5, 86);
+            this.annually.Margin = new System.Windows.Forms.Padding(2);
+            this.annually.Name = "annually";
+            this.annually.Size = new System.Drawing.Size(58, 17);
+            this.annually.TabIndex = 3;
+            this.annually.TabStop = true;
+            this.annually.Text = "Annual";
+            this.annually.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // monthly
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(7, 78);
-            this.radioButton6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(78, 21);
-            this.radioButton6.TabIndex = 2;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Monthly";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.monthly.AutoSize = true;
+            this.monthly.Location = new System.Drawing.Point(5, 63);
+            this.monthly.Margin = new System.Windows.Forms.Padding(2);
+            this.monthly.Name = "monthly";
+            this.monthly.Size = new System.Drawing.Size(62, 17);
+            this.monthly.TabIndex = 2;
+            this.monthly.TabStop = true;
+            this.monthly.Text = "Monthly";
+            this.monthly.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // fortnightly
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(7, 48);
-            this.radioButton5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(95, 21);
-            this.radioButton5.TabIndex = 1;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Fortnightly";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.fortnightly.AutoSize = true;
+            this.fortnightly.Location = new System.Drawing.Point(5, 39);
+            this.fortnightly.Margin = new System.Windows.Forms.Padding(2);
+            this.fortnightly.Name = "fortnightly";
+            this.fortnightly.Size = new System.Drawing.Size(73, 17);
+            this.fortnightly.TabIndex = 1;
+            this.fortnightly.TabStop = true;
+            this.fortnightly.Text = "Fortnightly";
+            this.fortnightly.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // weekly
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(7, 22);
-            this.radioButton4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(75, 21);
-            this.radioButton4.TabIndex = 0;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Weekly";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.weekly.AutoSize = true;
+            this.weekly.Location = new System.Drawing.Point(5, 18);
+            this.weekly.Margin = new System.Windows.Forms.Padding(2);
+            this.weekly.Name = "weekly";
+            this.weekly.Size = new System.Drawing.Size(61, 17);
+            this.weekly.TabIndex = 0;
+            this.weekly.TabStop = true;
+            this.weekly.Text = "Weekly";
+            this.weekly.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.lname);
+            this.groupBox4.Controls.Add(this.fname);
             this.groupBox4.Controls.Add(this.groupBox10);
-            this.groupBox4.Controls.Add(this.groupBox9);
+            this.groupBox4.Controls.Add(this.payMethod);
             this.groupBox4.Controls.Add(this.groupBox8);
             this.groupBox4.Controls.Add(this.groupBox1);
             this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Controls.Add(this.textBox1);
-            this.groupBox4.Controls.Add(this.maskedTextBox2);
-            this.groupBox4.Controls.Add(this.maskedTextBox1);
-            this.groupBox4.Controls.Add(this.groupBox7);
+            this.groupBox4.Controls.Add(this.phone);
+            this.groupBox4.Controls.Add(this.Duration);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Controls.Add(this.groupBox3);
+            this.groupBox4.Controls.Add(this.payFreq);
             this.groupBox4.Controls.Add(this.groupBox6);
-            this.groupBox4.Controls.Add(this.groupBox2);
-            this.groupBox4.Controls.Add(this.groupBox5);
-            this.groupBox4.Location = new System.Drawing.Point(117, 133);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox4.Controls.Add(this.MembershipType);
+            this.groupBox4.Controls.Add(this.extras);
+            this.groupBox4.Location = new System.Drawing.Point(88, 108);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox4.Size = new System.Drawing.Size(949, 520);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox4.Size = new System.Drawing.Size(712, 422);
             this.groupBox4.TabIndex = 18;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Please enter your details..";
             this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
-            // groupBox8
+            // lname
             // 
-            this.groupBox8.Controls.Add(this.textBox6);
-            this.groupBox8.Controls.Add(this.label11);
-            this.groupBox8.Controls.Add(this.textBox5);
-            this.groupBox8.Controls.Add(this.label10);
-            this.groupBox8.Controls.Add(this.textBox4);
-            this.groupBox8.Controls.Add(this.label3);
-            this.groupBox8.Location = new System.Drawing.Point(308, 165);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(325, 108);
-            this.groupBox8.TabIndex = 24;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Emergency Contact";
+            this.lname.Location = new System.Drawing.Point(157, 43);
+            this.lname.Name = "lname";
+            this.lname.Size = new System.Drawing.Size(148, 20);
+            this.lname.TabIndex = 28;
             // 
-            // textBox6
+            // fname
             // 
-            this.textBox6.Location = new System.Drawing.Point(104, 72);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(191, 22);
-            this.textBox6.TabIndex = 5;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(4, 69);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(90, 17);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Relationship:";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(77, 44);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(218, 22);
-            this.textBox5.TabIndex = 3;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(4, 44);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(60, 17);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Contact:";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(60, 19);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(235, 22);
-            this.textBox4.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 17);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Name:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(432, 52);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(201, 22);
-            this.textBox1.TabIndex = 23;
-            // 
-            // maskedTextBox2
-            // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(208, 52);
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(204, 22);
-            this.maskedTextBox2.TabIndex = 22;
-            this.maskedTextBox2.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox2_MaskInputRejected);
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(5, 52);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(186, 22);
-            this.maskedTextBox1.TabIndex = 21;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.radioButton8);
-            this.groupBox7.Controls.Add(this.radioButton9);
-            this.groupBox7.Controls.Add(this.radioButton10);
-            this.groupBox7.Controls.Add(this.radioButton11);
-            this.groupBox7.Location = new System.Drawing.Point(308, 278);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox7.Size = new System.Drawing.Size(149, 135);
-            this.groupBox7.TabIndex = 20;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Duration:";
-            // 
-            // radioButton8
-            // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(7, 106);
-            this.radioButton8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(95, 21);
-            this.radioButton8.TabIndex = 3;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "24 Months";
-            this.radioButton8.UseVisualStyleBackColor = true;
-            // 
-            // radioButton9
-            // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(7, 78);
-            this.radioButton9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(95, 21);
-            this.radioButton9.TabIndex = 2;
-            this.radioButton9.TabStop = true;
-            this.radioButton9.Text = "12 Months";
-            this.radioButton9.UseVisualStyleBackColor = true;
-            // 
-            // radioButton10
-            // 
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.Location = new System.Drawing.Point(7, 48);
-            this.radioButton10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(87, 21);
-            this.radioButton10.TabIndex = 1;
-            this.radioButton10.TabStop = true;
-            this.radioButton10.Text = "6 Months";
-            this.radioButton10.UseVisualStyleBackColor = true;
-            // 
-            // radioButton11
-            // 
-            this.radioButton11.AutoSize = true;
-            this.radioButton11.Location = new System.Drawing.Point(7, 22);
-            this.radioButton11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(87, 21);
-            this.radioButton11.TabIndex = 0;
-            this.radioButton11.TabStop = true;
-            this.radioButton11.Text = "3 Months";
-            this.radioButton11.UseVisualStyleBackColor = true;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.dateTimePicker1);
-            this.groupBox6.Location = new System.Drawing.Point(308, 84);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox6.Size = new System.Drawing.Size(325, 74);
-            this.groupBox6.TabIndex = 17;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Birthday";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(24, 30);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(265, 22);
-            this.dateTimePicker1.TabIndex = 0;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.checkBox8);
-            this.groupBox5.Controls.Add(this.checkBox7);
-            this.groupBox5.Controls.Add(this.checkBox9);
-            this.groupBox5.Controls.Add(this.checkBox10);
-            this.groupBox5.Location = new System.Drawing.Point(5, 420);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox5.Size = new System.Drawing.Size(297, 73);
-            this.groupBox5.TabIndex = 0;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Optional Extras";
-            this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
-            // 
-            // checkBox8
-            // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(153, 21);
-            this.checkBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(136, 21);
-            this.checkBox8.TabIndex = 1;
-            this.checkBox8.Text = "Personal Trainer";
-            this.checkBox8.UseVisualStyleBackColor = true;
-            this.checkBox8.CheckedChanged += new System.EventHandler(this.checkBox8_CheckedChanged);
-            // 
-            // checkBox7
-            // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(7, 21);
-            this.checkBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(107, 21);
-            this.checkBox7.TabIndex = 0;
-            this.checkBox7.Text = "24/7 Access";
-            this.checkBox7.UseVisualStyleBackColor = true;
-            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
-            // 
-            // checkBox9
-            // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(7, 47);
-            this.checkBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(137, 21);
-            this.checkBox9.TabIndex = 2;
-            this.checkBox9.Text = "Diet Consultation";
-            this.checkBox9.UseVisualStyleBackColor = true;
-            // 
-            // checkBox10
-            // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(153, 47);
-            this.checkBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(130, 21);
-            this.checkBox10.TabIndex = 3;
-            this.checkBox10.Text = "Online Tutorials";
-            this.checkBox10.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Tomato;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(643, 659);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(163, 45);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.LimeGreen;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(410, 659);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(186, 45);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.radioButton15);
-            this.groupBox9.Controls.Add(this.radioButton14);
-            this.groupBox9.Controls.Add(this.radioButton13);
-            this.groupBox9.Controls.Add(this.radioButton12);
-            this.groupBox9.Location = new System.Drawing.Point(308, 420);
-            this.groupBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox9.Size = new System.Drawing.Size(325, 73);
-            this.groupBox9.TabIndex = 25;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Payment Method";
-            this.groupBox9.Enter += new System.EventHandler(this.groupBox9_Enter);
-            // 
-            // radioButton12
-            // 
-            this.radioButton12.AutoSize = true;
-            this.radioButton12.Location = new System.Drawing.Point(0, 20);
-            this.radioButton12.Name = "radioButton12";
-            this.radioButton12.Size = new System.Drawing.Size(103, 21);
-            this.radioButton12.TabIndex = 0;
-            this.radioButton12.TabStop = true;
-            this.radioButton12.Text = "Direct Debit";
-            this.radioButton12.UseVisualStyleBackColor = true;
-            // 
-            // radioButton13
-            // 
-            this.radioButton13.AutoSize = true;
-            this.radioButton13.Location = new System.Drawing.Point(0, 47);
-            this.radioButton13.Name = "radioButton13";
-            this.radioButton13.Size = new System.Drawing.Size(100, 21);
-            this.radioButton13.TabIndex = 1;
-            this.radioButton13.TabStop = true;
-            this.radioButton13.Text = "Credit Card";
-            this.radioButton13.UseVisualStyleBackColor = true;
-            // 
-            // radioButton14
-            // 
-            this.radioButton14.AutoSize = true;
-            this.radioButton14.Location = new System.Drawing.Point(134, 21);
-            this.radioButton14.Name = "radioButton14";
-            this.radioButton14.Size = new System.Drawing.Size(119, 21);
-            this.radioButton14.TabIndex = 2;
-            this.radioButton14.TabStop = true;
-            this.radioButton14.Text = "Bank Transfer";
-            this.radioButton14.UseVisualStyleBackColor = true;
-            // 
-            // radioButton15
-            // 
-            this.radioButton15.AutoSize = true;
-            this.radioButton15.Location = new System.Drawing.Point(134, 48);
-            this.radioButton15.Name = "radioButton15";
-            this.radioButton15.Size = new System.Drawing.Size(61, 21);
-            this.radioButton15.TabIndex = 3;
-            this.radioButton15.TabStop = true;
-            this.radioButton15.Text = "Cash";
-            this.radioButton15.UseVisualStyleBackColor = true;
+            this.fname.Location = new System.Drawing.Point(5, 42);
+            this.fname.Name = "fname";
+            this.fname.Size = new System.Drawing.Size(137, 20);
+            this.fname.TabIndex = 27;
             // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.richTextBox1);
-            this.groupBox10.Location = new System.Drawing.Point(661, 32);
+            this.groupBox10.Controls.Add(this.display1);
+            this.groupBox10.Location = new System.Drawing.Point(496, 26);
+            this.groupBox10.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(258, 461);
+            this.groupBox10.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox10.Size = new System.Drawing.Size(194, 375);
             this.groupBox10.TabIndex = 26;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Order Details";
             // 
-            // richTextBox1
+            // display1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(13, 33);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(229, 408);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.display1.Location = new System.Drawing.Point(10, 27);
+            this.display1.Margin = new System.Windows.Forms.Padding(2);
+            this.display1.Name = "display1";
+            this.display1.Size = new System.Drawing.Size(173, 332);
+            this.display1.TabIndex = 0;
+            this.display1.Text = "";
+            // 
+            // payMethod
+            // 
+            this.payMethod.Controls.Add(this.Cash);
+            this.payMethod.Controls.Add(this.BT);
+            this.payMethod.Controls.Add(this.CC);
+            this.payMethod.Controls.Add(this.DD);
+            this.payMethod.Location = new System.Drawing.Point(231, 341);
+            this.payMethod.Margin = new System.Windows.Forms.Padding(2);
+            this.payMethod.Name = "payMethod";
+            this.payMethod.Padding = new System.Windows.Forms.Padding(2);
+            this.payMethod.Size = new System.Drawing.Size(244, 59);
+            this.payMethod.TabIndex = 25;
+            this.payMethod.TabStop = false;
+            this.payMethod.Text = "Payment Method";
+            this.payMethod.Enter += new System.EventHandler(this.groupBox9_Enter);
+            // 
+            // Cash
+            // 
+            this.Cash.AutoSize = true;
+            this.Cash.Location = new System.Drawing.Point(100, 39);
+            this.Cash.Margin = new System.Windows.Forms.Padding(2);
+            this.Cash.Name = "Cash";
+            this.Cash.Size = new System.Drawing.Size(49, 17);
+            this.Cash.TabIndex = 3;
+            this.Cash.TabStop = true;
+            this.Cash.Text = "Cash";
+            this.Cash.UseVisualStyleBackColor = true;
+            // 
+            // BT
+            // 
+            this.BT.AutoSize = true;
+            this.BT.Location = new System.Drawing.Point(100, 17);
+            this.BT.Margin = new System.Windows.Forms.Padding(2);
+            this.BT.Name = "BT";
+            this.BT.Size = new System.Drawing.Size(92, 17);
+            this.BT.TabIndex = 2;
+            this.BT.TabStop = true;
+            this.BT.Text = "Bank Transfer";
+            this.BT.UseVisualStyleBackColor = true;
+            // 
+            // CC
+            // 
+            this.CC.AutoSize = true;
+            this.CC.Location = new System.Drawing.Point(0, 38);
+            this.CC.Margin = new System.Windows.Forms.Padding(2);
+            this.CC.Name = "CC";
+            this.CC.Size = new System.Drawing.Size(77, 17);
+            this.CC.TabIndex = 1;
+            this.CC.TabStop = true;
+            this.CC.Text = "Credit Card";
+            this.CC.UseVisualStyleBackColor = true;
+            // 
+            // DD
+            // 
+            this.DD.AutoSize = true;
+            this.DD.Location = new System.Drawing.Point(0, 16);
+            this.DD.Margin = new System.Windows.Forms.Padding(2);
+            this.DD.Name = "DD";
+            this.DD.Size = new System.Drawing.Size(81, 17);
+            this.DD.TabIndex = 0;
+            this.DD.TabStop = true;
+            this.DD.Text = "Direct Debit";
+            this.DD.UseVisualStyleBackColor = true;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.emRel);
+            this.groupBox8.Controls.Add(this.label11);
+            this.groupBox8.Controls.Add(this.emNum);
+            this.groupBox8.Controls.Add(this.label10);
+            this.groupBox8.Controls.Add(this.emCon);
+            this.groupBox8.Controls.Add(this.label3);
+            this.groupBox8.Location = new System.Drawing.Point(231, 134);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox8.Size = new System.Drawing.Size(244, 88);
+            this.groupBox8.TabIndex = 24;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Emergency Contact";
+            // 
+            // emRel
+            // 
+            this.emRel.Location = new System.Drawing.Point(78, 58);
+            this.emRel.Margin = new System.Windows.Forms.Padding(2);
+            this.emRel.Name = "emRel";
+            this.emRel.Size = new System.Drawing.Size(144, 20);
+            this.emRel.TabIndex = 5;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 56);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(68, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Relationship:";
+            // 
+            // emNum
+            // 
+            this.emNum.Location = new System.Drawing.Point(58, 36);
+            this.emNum.Margin = new System.Windows.Forms.Padding(2);
+            this.emNum.Name = "emNum";
+            this.emNum.Size = new System.Drawing.Size(164, 20);
+            this.emNum.TabIndex = 3;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 36);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(47, 13);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Contact:";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // emCon
+            // 
+            this.emCon.Location = new System.Drawing.Point(45, 15);
+            this.emCon.Margin = new System.Windows.Forms.Padding(2);
+            this.emCon.Name = "emCon";
+            this.emCon.Size = new System.Drawing.Size(177, 20);
+            this.emCon.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(5, 18);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Name:";
+            // 
+            // phone
+            // 
+            this.phone.Location = new System.Drawing.Point(324, 42);
+            this.phone.Margin = new System.Windows.Forms.Padding(2);
+            this.phone.Name = "phone";
+            this.phone.Size = new System.Drawing.Size(152, 20);
+            this.phone.TabIndex = 23;
+            // 
+            // Duration
+            // 
+            this.Duration.Controls.Add(this.twoyear);
+            this.Duration.Controls.Add(this.oneyear);
+            this.Duration.Controls.Add(this.half);
+            this.Duration.Controls.Add(this.quarter);
+            this.Duration.Location = new System.Drawing.Point(231, 226);
+            this.Duration.Margin = new System.Windows.Forms.Padding(2);
+            this.Duration.Name = "Duration";
+            this.Duration.Padding = new System.Windows.Forms.Padding(2);
+            this.Duration.Size = new System.Drawing.Size(112, 110);
+            this.Duration.TabIndex = 20;
+            this.Duration.TabStop = false;
+            this.Duration.Text = "Duration:";
+            // 
+            // twoyear
+            // 
+            this.twoyear.AutoSize = true;
+            this.twoyear.Location = new System.Drawing.Point(5, 86);
+            this.twoyear.Margin = new System.Windows.Forms.Padding(2);
+            this.twoyear.Name = "twoyear";
+            this.twoyear.Size = new System.Drawing.Size(75, 17);
+            this.twoyear.TabIndex = 3;
+            this.twoyear.TabStop = true;
+            this.twoyear.Text = "24 Months";
+            this.twoyear.UseVisualStyleBackColor = true;
+            // 
+            // oneyear
+            // 
+            this.oneyear.AutoSize = true;
+            this.oneyear.Location = new System.Drawing.Point(5, 63);
+            this.oneyear.Margin = new System.Windows.Forms.Padding(2);
+            this.oneyear.Name = "oneyear";
+            this.oneyear.Size = new System.Drawing.Size(75, 17);
+            this.oneyear.TabIndex = 2;
+            this.oneyear.TabStop = true;
+            this.oneyear.Text = "12 Months";
+            this.oneyear.UseVisualStyleBackColor = true;
+            // 
+            // half
+            // 
+            this.half.AutoSize = true;
+            this.half.Location = new System.Drawing.Point(5, 39);
+            this.half.Margin = new System.Windows.Forms.Padding(2);
+            this.half.Name = "half";
+            this.half.Size = new System.Drawing.Size(69, 17);
+            this.half.TabIndex = 1;
+            this.half.TabStop = true;
+            this.half.Text = "6 Months";
+            this.half.UseVisualStyleBackColor = true;
+            // 
+            // quarter
+            // 
+            this.quarter.AutoSize = true;
+            this.quarter.Location = new System.Drawing.Point(5, 18);
+            this.quarter.Margin = new System.Windows.Forms.Padding(2);
+            this.quarter.Name = "quarter";
+            this.quarter.Size = new System.Drawing.Size(69, 17);
+            this.quarter.TabIndex = 0;
+            this.quarter.TabStop = true;
+            this.quarter.Text = "3 Months";
+            this.quarter.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.birthday);
+            this.groupBox6.Location = new System.Drawing.Point(231, 68);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(244, 60);
+            this.groupBox6.TabIndex = 17;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Birthday";
+            // 
+            // birthday
+            // 
+            this.birthday.Location = new System.Drawing.Point(18, 24);
+            this.birthday.Name = "birthday";
+            this.birthday.Size = new System.Drawing.Size(200, 20);
+            this.birthday.TabIndex = 0;
+            // 
+            // extras
+            // 
+            this.extras.Controls.Add(this.PT);
+            this.extras.Controls.Add(this.alltime);
+            this.extras.Controls.Add(this.Diet);
+            this.extras.Controls.Add(this.vids);
+            this.extras.Location = new System.Drawing.Point(4, 341);
+            this.extras.Margin = new System.Windows.Forms.Padding(2);
+            this.extras.Name = "extras";
+            this.extras.Padding = new System.Windows.Forms.Padding(2);
+            this.extras.Size = new System.Drawing.Size(223, 59);
+            this.extras.TabIndex = 0;
+            this.extras.TabStop = false;
+            this.extras.Text = "Optional Extras";
+            this.extras.Enter += new System.EventHandler(this.groupBox5_Enter);
+            // 
+            // PT
+            // 
+            this.PT.AutoSize = true;
+            this.PT.Location = new System.Drawing.Point(115, 17);
+            this.PT.Margin = new System.Windows.Forms.Padding(2);
+            this.PT.Name = "PT";
+            this.PT.Size = new System.Drawing.Size(103, 17);
+            this.PT.TabIndex = 1;
+            this.PT.Text = "Personal Trainer";
+            this.PT.UseVisualStyleBackColor = true;
+            this.PT.CheckedChanged += new System.EventHandler(this.checkBox8_CheckedChanged);
+            // 
+            // alltime
+            // 
+            this.alltime.AutoSize = true;
+            this.alltime.Location = new System.Drawing.Point(5, 17);
+            this.alltime.Margin = new System.Windows.Forms.Padding(2);
+            this.alltime.Name = "alltime";
+            this.alltime.Size = new System.Drawing.Size(87, 17);
+            this.alltime.TabIndex = 0;
+            this.alltime.Text = "24/7 Access";
+            this.alltime.UseVisualStyleBackColor = true;
+            this.alltime.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
+            // 
+            // Diet
+            // 
+            this.Diet.AutoSize = true;
+            this.Diet.Location = new System.Drawing.Point(5, 38);
+            this.Diet.Margin = new System.Windows.Forms.Padding(2);
+            this.Diet.Name = "Diet";
+            this.Diet.Size = new System.Drawing.Size(106, 17);
+            this.Diet.TabIndex = 2;
+            this.Diet.Text = "Diet Consultation";
+            this.Diet.UseVisualStyleBackColor = true;
+            // 
+            // vids
+            // 
+            this.vids.AutoSize = true;
+            this.vids.Location = new System.Drawing.Point(115, 38);
+            this.vids.Margin = new System.Windows.Forms.Padding(2);
+            this.vids.Name = "vids";
+            this.vids.Size = new System.Drawing.Size(99, 17);
+            this.vids.TabIndex = 3;
+            this.vids.Text = "Online Tutorials";
+            this.vids.UseVisualStyleBackColor = true;
+            // 
+            // cancel
+            // 
+            this.cancel.BackColor = System.Drawing.Color.Tomato;
+            this.cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancel.Location = new System.Drawing.Point(678, 535);
+            this.cancel.Name = "cancel";
+            this.cancel.Size = new System.Drawing.Size(122, 37);
+            this.cancel.TabIndex = 19;
+            this.cancel.Text = "Cancel";
+            this.cancel.UseVisualStyleBackColor = false;
+            // 
+            // confirm
+            // 
+            this.confirm.BackColor = System.Drawing.Color.LimeGreen;
+            this.confirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirm.Location = new System.Drawing.Point(265, 535);
+            this.confirm.Name = "confirm";
+            this.confirm.Size = new System.Drawing.Size(181, 37);
+            this.confirm.TabIndex = 18;
+            this.confirm.Text = "Confirm Order";
+            this.confirm.UseVisualStyleBackColor = false;
+            // 
+            // calculate
+            // 
+            this.calculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.calculate.Location = new System.Drawing.Point(452, 535);
+            this.calculate.Name = "calculate";
+            this.calculate.Size = new System.Drawing.Size(139, 37);
+            this.calculate.TabIndex = 20;
+            this.calculate.Text = "Subtotal";
+            this.calculate.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1170, 737);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(878, 599);
+            this.Controls.Add(this.calculate);
+            this.Controls.Add(this.cancel);
+            this.Controls.Add(this.confirm);
             this.Controls.Add(this.groupBox4);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "City Gym Registration";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.MembershipType.ResumeLayout(false);
+            this.MembershipType.PerformLayout();
+            this.payFreq.ResumeLayout(false);
+            this.payFreq.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.payMethod.ResumeLayout(false);
+            this.payMethod.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
+            this.Duration.ResumeLayout(false);
+            this.Duration.PerformLayout();
             this.groupBox6.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
+            this.extras.ResumeLayout(false);
+            this.extras.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -743,7 +777,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox addNum;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -751,51 +785,52 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox MembershipType;
+        private System.Windows.Forms.GroupBox payFreq;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.CheckBox checkBox10;
-        private System.Windows.Forms.CheckBox checkBox9;
-        private System.Windows.Forms.CheckBox checkBox8;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton7;
+        private System.Windows.Forms.GroupBox extras;
+        private System.Windows.Forms.CheckBox vids;
+        private System.Windows.Forms.CheckBox Diet;
+        private System.Windows.Forms.CheckBox PT;
+        private System.Windows.Forms.CheckBox alltime;
+        private System.Windows.Forms.RadioButton Premium;
+        private System.Windows.Forms.RadioButton Regular;
+        private System.Windows.Forms.RadioButton Basic;
+        private System.Windows.Forms.RadioButton monthly;
+        private System.Windows.Forms.RadioButton fortnightly;
+        private System.Windows.Forms.RadioButton weekly;
+        private System.Windows.Forms.RadioButton annually;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.RadioButton radioButton9;
-        private System.Windows.Forms.RadioButton radioButton10;
-        private System.Windows.Forms.RadioButton radioButton11;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox5;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox4;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.DateTimePicker birthday;
+        private System.Windows.Forms.Button confirm;
+        private System.Windows.Forms.GroupBox Duration;
+        private System.Windows.Forms.RadioButton twoyear;
+        private System.Windows.Forms.RadioButton oneyear;
+        private System.Windows.Forms.RadioButton half;
+        private System.Windows.Forms.RadioButton quarter;
+        private System.Windows.Forms.Button cancel;
+        private System.Windows.Forms.TextBox postcode;
+        private System.Windows.Forms.MaskedTextBox addState;
+        private System.Windows.Forms.MaskedTextBox addCity;
+        private System.Windows.Forms.MaskedTextBox addStreet;
+        private System.Windows.Forms.TextBox phone;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox emRel;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox emNum;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox emCon;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.GroupBox payMethod;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.RadioButton radioButton15;
-        private System.Windows.Forms.RadioButton radioButton14;
-        private System.Windows.Forms.RadioButton radioButton13;
-        private System.Windows.Forms.RadioButton radioButton12;
+        private System.Windows.Forms.RichTextBox display1;
+        private System.Windows.Forms.RadioButton Cash;
+        private System.Windows.Forms.RadioButton BT;
+        private System.Windows.Forms.RadioButton CC;
+        private System.Windows.Forms.RadioButton DD;
+        private System.Windows.Forms.Button calculate;
+        private System.Windows.Forms.TextBox lname;
+        private System.Windows.Forms.TextBox fname;
     }
 }
 
