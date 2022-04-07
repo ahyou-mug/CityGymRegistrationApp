@@ -7,15 +7,67 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+
         public Form1()
         {
             InitializeComponent();
         }
+        public class Customer
+        {
+            Dictionary<string, dynamic> cust = new Dictionary<string, dynamic>()
+            {
+                
+            };
+            public Dictionary<string, dynamic> Cust { get => cust; set => cust = value; }
+            Dictionary<string, int> prices = new Dictionary<string, int>()
+        {
+            {"Basic",10},
+            {"Regular",15},
+            {"Premium",20},
+            {"alltime", 1},
+            {"PT",20},
+            {"Diet",20},
+            {"vids",2},
+            {"quater",0},
+            {"half", 0},
+            {"oneyear",-2},
+            {"twoyear",-5},
+            {"DD",99}
+        };
+            public Dictionary<string, int> Prices { get => prices; set => prices = value; }
+
+            Dictionary<string, string> terms = new Dictionary<string, string>()
+        {
+            {"Basic", "Basic"},
+            {"Regular","Regular"},
+            {"Premium","Premium"},
+            {"alltime", "24/7"},
+            {"PT", "Personal Trainer"},
+            {"Diet", "Diet Consultation"},
+            {"vids", "Online Tutorials"},
+            {"quater", "3 Months"},
+            {"half", "6 Months"},
+            {"oneyear", "12 Months"},
+            {"twoyear","2 Years"},
+            {"DD","Direct Debit"},
+            {"BT", "Bank Transfer"},
+            {"CC", "Credit Card"},
+            {"cash", "Cash" },
+            {"weekly", "Weekly"},
+            {"fortnightly","Fortnightly"},
+            {"monthly", "Monthly"},
+            {"annually", "Annually"}
+        };
+            public Dictionary<string, string> Terms { get => terms; set => terms = value; }
+        }
+        Customer oCust = new Customer(); // Create new object oCust of class Customer(), accessible to all buttons/methods
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -99,90 +151,98 @@ namespace WindowsFormsApp1
 
         private void calculate_Click(object sender, EventArgs e)
         {
-            var oCust = new Customer();// Create new class_customer()
-            oCust.fname = fname.Text;// assign fname text box to customer.fname property
-            oCust.lname = lname.Text;// same
-            oCust.phone = phone.Text;
-            int.TryParse(addNum.Text, out oCust.addNum);// tryparse - ensure input is valid int
-            oCust.addStreet = addStreet.Text;
-            oCust.addCity = addCity.Text;
-            oCust.addState = addState.Text;
-            int.TryParse(postcode.Text, out oCust.postCode);// ensure input is valid int
-            oCust.emConName = emCon.Text;
-            oCust.emConNum = emNum.Text;
-            oCust.emConRel = emRel.Text;
+            oCust.Cust["First Name"] = fname.Text;// assign fname text box to customer.fname property
+            oCust.Cust["Last Name"]= lname.Text;// same
+            oCust.Cust["Phone"] = phone.Text;
+            oCust.Cust["Birthday"] = bday.Text;
+            oCust.Cust["Street Number"] = addNum.Text;
+            oCust.Cust["Street Name"] = addStreet.Text;
+            oCust.Cust["City"] = addCity.Text;
+            oCust.Cust["District"] = addState.Text;
+            oCust.Cust["Post Code"] = postcode.Text;
+            oCust.Cust["Emergency Contact"] = emCon.Text;
+            oCust.Cust["Emergency Phone"] = emNum.Text;
+            oCust.Cust["Emergency Relationship"] = emRel.Text;
+            oCust.Cust.Add("Weekly Price", 0);
             foreach (var rdo in MembershipType.Controls.OfType<RadioButton>())// loop through buttons in MembershipType groupbox
             {
                 if (rdo.Checked)// if button is checked
                 {
-                    oCust.memType = oCust.Terms[rdo.Name];// assign value of box to customer.membershipType property
-                    oCust.weeklyPrice += oCust.Prices[oCust.memType];// add corresponding value from customer.prices dict to weekly price
+                    oCust.Cust["Membership Type"] = oCust.Terms[rdo.Name];// assign value of box to customer.membershipType property
+                    oCust.Cust["Weekly Price"] = oCust.Prices[oCust.Cust["Membership Type"]];// add corresponding value from customer.prices dict to weekly price
                 }
             }
             foreach (var rdo in Duration.Controls.OfType<RadioButton>())// loop through buttons in Duration groupbox
             {
                 if (rdo.Checked)// if button is checked
                 {
-                    oCust.memDuration = oCust.Terms[rdo.Name];// add membership duration value to customer class
-                    oCust.weeklyPrice += oCust.Prices[oCust.memDuration];// add value to weekly price (add -nums for discounts)
+                    oCust.Cust["Membership Duration"] = oCust.Terms[rdo.Name];// add membership duration value to customer class
+                    oCust.Cust["Weekly Price"] += oCust.Prices[rdo.Name];// add value to weekly price (add -nums for discounts)
                 }
             }
             foreach (var rdo in payFreq.Controls.OfType<RadioButton>())// loop through payment frequency buttons
             {
                 if (rdo.Checked)// if button is checked
                 {
-                    oCust.payFreq = oCust.Terms[rdo.Name];// asssign value to payment frequency property
+                    oCust.Cust["Payment Frequency"] = oCust.Terms[rdo.Name];// asssign value to payment frequency property
                 }
             }
             foreach (var rdo in payMethod.Controls.OfType<RadioButton>())// loop through pay method buttons
             {
                 if (rdo.Checked)// if button is checked
                 {
-                    oCust.payMethod = oCust.Terms[rdo.Name];// assign payment method to customer
+                    oCust.Cust["Payment Method"] = oCust.Terms[rdo.Name];// assign payment method to customer
                 }
             }
+
+            int i = 1;// Only for counter iteration
             foreach (var rdo in extras.Controls.OfType<CheckBox>())// loop through additional options
             {
                 if (rdo.Checked)// if the box is checked
                 {
-                    oCust.weeklyPrice += oCust.Prices[rdo.Name];// adds price to weekly total
+                    oCust.Cust["Weekly Price"] += oCust.Prices[rdo.Name];// adds price to weekly total
+                    oCust.Cust.Add("Extras "+i, oCust.Terms[rdo.Name]);
+                    i++;
                 }
             }
-            if (oCust.payMethod == "DD")// if customer is paying by direct debit
+            if (oCust.Cust["Payment Method"] == "Direct Debit")// if customer is paying by direct debit
             {
-                oCust.weeklyPrice = oCust.weeklyPrice * (oCust.Prices[oCust.payMethod] / 100);// multiply their weekly total by .99 to apply 1% discount
+                oCust.Cust["Weekly Price"] = ToFloat(oCust.Cust["Weekly Price"]) * 0.99;// multiply their weekly total by .99 to apply 1% discount
             }
-            switch (oCust.payFreq)
+            switch (oCust.Cust["Payment Frequency"])
             {
                 case "Fortnightly":
-                    oCust.payAmount = oCust.weeklyPrice * 2;
+                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Price"] * 2;
                     break;
                 case "Monthly":
-                    oCust.payAmount = oCust.weeklyPrice * 4;
+                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Price"] * 4;
                     break;
                 case "Annually":
-                    oCust.payAmount = oCust.weeklyPrice * 52;
+                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Price"] * 52;
                     break;
             }
-            // display order subtotal and details for checking before submission
-            display1.Text = "First Name: " + oCust.fname;
-            display1.Text = "Last Name: " + oCust.lname;
-            display1.Text = "Phone: " + oCust.phone;
-            display1.Text = "Emergency Contact: " + oCust.emConName;// Not printing to Display Box
-            display1.Text = "Emergency Contact Phone: " + oCust.emConNum;
-            display1.Text = "Membership Duration: " + oCust.memDuration;
-            display1.Text = "Membership Type: " + oCust.memType;
-            display1.Text = "Payment Frequency: " + oCust.payFreq;
-            display1.Text = "Payment Method: " + oCust.payMethod;
-            display1.Text = "Additional Options: ";
-            foreach (var rdo in extras.Controls.OfType<CheckBox>())// loop through additional options
+            // display order subtotal and details for checking before submission ***Doesn't print list of customer extras***
+            foreach (var key in oCust.Cust.Keys)
             {
-                if (rdo.Checked)// if the box is checked
+                display1.Text = display1.Text + "\n" + key + ": \n" + oCust.Cust[key];
+            }
+
+        }
+        private void confirm_Click(object sender, EventArgs e)
+        {
+            string path = @"C:\Users\Local user\OneDrive - TOPNZ STUDENT (MYOPENPOLYTECHNIC)\Desktop\MyTest.txt"; // set path for file
+            if (!File.Exists(path)) // check if file exists
+            {
+                StreamWriter sw = File.CreateText(path); // create file
+            }
+            TextWriter wr = new StreamWriter(path);
+            {
+                foreach (var ind in oCust.Cust.Keys)
                 {
-                    display1.Text = oCust.Terms[rdo.Name];// adds price to weekly total
+                    wr.WriteLine(ind + " = " + oCust.Cust[ind]);
                 }
             }
-            display1.Text = "Customer subtotal:\n" + oCust.payAmount;
+            wr.Close();
         }
     }
 }

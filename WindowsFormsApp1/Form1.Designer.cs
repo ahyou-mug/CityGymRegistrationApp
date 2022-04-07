@@ -35,7 +35,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.address = new System.Windows.Forms.GroupBox();
             this.postcode = new System.Windows.Forms.TextBox();
             this.addState = new System.Windows.Forms.MaskedTextBox();
             this.addCity = new System.Windows.Forms.MaskedTextBox();
@@ -55,14 +55,13 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.lname = new System.Windows.Forms.TextBox();
             this.fname = new System.Windows.Forms.TextBox();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.display1 = new System.Windows.Forms.RichTextBox();
+            this.orderdeets = new System.Windows.Forms.GroupBox();
             this.payMethod = new System.Windows.Forms.GroupBox();
             this.Cash = new System.Windows.Forms.RadioButton();
             this.BT = new System.Windows.Forms.RadioButton();
             this.CC = new System.Windows.Forms.RadioButton();
             this.DD = new System.Windows.Forms.RadioButton();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.emergency = new System.Windows.Forms.GroupBox();
             this.emRel = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.emNum = new System.Windows.Forms.TextBox();
@@ -75,8 +74,8 @@
             this.oneyear = new System.Windows.Forms.RadioButton();
             this.half = new System.Windows.Forms.RadioButton();
             this.quarter = new System.Windows.Forms.RadioButton();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.birthday = new System.Windows.Forms.DateTimePicker();
+            this.birthday = new System.Windows.Forms.GroupBox();
+            this.bday = new System.Windows.Forms.DateTimePicker();
             this.extras = new System.Windows.Forms.GroupBox();
             this.PT = new System.Windows.Forms.CheckBox();
             this.alltime = new System.Windows.Forms.CheckBox();
@@ -85,15 +84,16 @@
             this.cancel = new System.Windows.Forms.Button();
             this.confirm = new System.Windows.Forms.Button();
             this.calculate = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.display1 = new System.Windows.Forms.RichTextBox();
+            this.address.SuspendLayout();
             this.MembershipType.SuspendLayout();
             this.payFreq.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox10.SuspendLayout();
+            this.orderdeets.SuspendLayout();
             this.payMethod.SuspendLayout();
-            this.groupBox8.SuspendLayout();
+            this.emergency.SuspendLayout();
             this.Duration.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.birthday.SuspendLayout();
             this.extras.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -158,26 +158,26 @@
             this.label7.TabIndex = 11;
             this.label7.Text = "Town:";
             // 
-            // groupBox1
+            // address
             // 
-            this.groupBox1.Controls.Add(this.postcode);
-            this.groupBox1.Controls.Add(this.addState);
-            this.groupBox1.Controls.Add(this.addCity);
-            this.groupBox1.Controls.Add(this.addStreet);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.addNum);
-            this.groupBox1.Location = new System.Drawing.Point(1, 68);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(226, 149);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Address";
+            this.address.Controls.Add(this.postcode);
+            this.address.Controls.Add(this.addState);
+            this.address.Controls.Add(this.addCity);
+            this.address.Controls.Add(this.addStreet);
+            this.address.Controls.Add(this.label8);
+            this.address.Controls.Add(this.label4);
+            this.address.Controls.Add(this.label7);
+            this.address.Controls.Add(this.label6);
+            this.address.Controls.Add(this.label5);
+            this.address.Controls.Add(this.addNum);
+            this.address.Location = new System.Drawing.Point(1, 68);
+            this.address.Margin = new System.Windows.Forms.Padding(2);
+            this.address.Name = "address";
+            this.address.Padding = new System.Windows.Forms.Padding(2);
+            this.address.Size = new System.Drawing.Size(226, 149);
+            this.address.TabIndex = 13;
+            this.address.TabStop = false;
+            this.address.Text = "Address";
             // 
             // postcode
             // 
@@ -361,17 +361,17 @@
             // 
             this.groupBox4.Controls.Add(this.lname);
             this.groupBox4.Controls.Add(this.fname);
-            this.groupBox4.Controls.Add(this.groupBox10);
+            this.groupBox4.Controls.Add(this.orderdeets);
             this.groupBox4.Controls.Add(this.payMethod);
-            this.groupBox4.Controls.Add(this.groupBox8);
-            this.groupBox4.Controls.Add(this.groupBox1);
+            this.groupBox4.Controls.Add(this.emergency);
+            this.groupBox4.Controls.Add(this.address);
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.phone);
             this.groupBox4.Controls.Add(this.Duration);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.payFreq);
-            this.groupBox4.Controls.Add(this.groupBox6);
+            this.groupBox4.Controls.Add(this.birthday);
             this.groupBox4.Controls.Add(this.MembershipType);
             this.groupBox4.Controls.Add(this.extras);
             this.groupBox4.Location = new System.Drawing.Point(88, 108);
@@ -398,26 +398,17 @@
             this.fname.Size = new System.Drawing.Size(137, 20);
             this.fname.TabIndex = 27;
             // 
-            // groupBox10
+            // orderdeets
             // 
-            this.groupBox10.Controls.Add(this.display1);
-            this.groupBox10.Location = new System.Drawing.Point(496, 26);
-            this.groupBox10.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox10.Size = new System.Drawing.Size(194, 375);
-            this.groupBox10.TabIndex = 26;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Order Details";
-            // 
-            // display1
-            // 
-            this.display1.Location = new System.Drawing.Point(10, 27);
-            this.display1.Margin = new System.Windows.Forms.Padding(2);
-            this.display1.Name = "display1";
-            this.display1.Size = new System.Drawing.Size(173, 332);
-            this.display1.TabIndex = 0;
-            this.display1.Text = "";
+            this.orderdeets.Controls.Add(this.display1);
+            this.orderdeets.Location = new System.Drawing.Point(479, 26);
+            this.orderdeets.Margin = new System.Windows.Forms.Padding(2);
+            this.orderdeets.Name = "orderdeets";
+            this.orderdeets.Padding = new System.Windows.Forms.Padding(2);
+            this.orderdeets.Size = new System.Drawing.Size(211, 375);
+            this.orderdeets.TabIndex = 26;
+            this.orderdeets.TabStop = false;
+            this.orderdeets.Text = "Order Details";
             // 
             // payMethod
             // 
@@ -483,22 +474,22 @@
             this.DD.Text = "Direct Debit";
             this.DD.UseVisualStyleBackColor = true;
             // 
-            // groupBox8
+            // emergency
             // 
-            this.groupBox8.Controls.Add(this.emRel);
-            this.groupBox8.Controls.Add(this.label11);
-            this.groupBox8.Controls.Add(this.emNum);
-            this.groupBox8.Controls.Add(this.label10);
-            this.groupBox8.Controls.Add(this.emCon);
-            this.groupBox8.Controls.Add(this.label3);
-            this.groupBox8.Location = new System.Drawing.Point(231, 134);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox8.Size = new System.Drawing.Size(244, 88);
-            this.groupBox8.TabIndex = 24;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Emergency Contact";
+            this.emergency.Controls.Add(this.emRel);
+            this.emergency.Controls.Add(this.label11);
+            this.emergency.Controls.Add(this.emNum);
+            this.emergency.Controls.Add(this.label10);
+            this.emergency.Controls.Add(this.emCon);
+            this.emergency.Controls.Add(this.label3);
+            this.emergency.Location = new System.Drawing.Point(231, 134);
+            this.emergency.Margin = new System.Windows.Forms.Padding(2);
+            this.emergency.Name = "emergency";
+            this.emergency.Padding = new System.Windows.Forms.Padding(2);
+            this.emergency.Size = new System.Drawing.Size(244, 88);
+            this.emergency.TabIndex = 24;
+            this.emergency.TabStop = false;
+            this.emergency.Text = "Emergency Contact";
             // 
             // emRel
             // 
@@ -626,22 +617,22 @@
             this.quarter.Text = "3 Months";
             this.quarter.UseVisualStyleBackColor = true;
             // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.birthday);
-            this.groupBox6.Location = new System.Drawing.Point(231, 68);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(244, 60);
-            this.groupBox6.TabIndex = 17;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Birthday";
-            // 
             // birthday
             // 
-            this.birthday.Location = new System.Drawing.Point(18, 24);
+            this.birthday.Controls.Add(this.bday);
+            this.birthday.Location = new System.Drawing.Point(231, 68);
             this.birthday.Name = "birthday";
-            this.birthday.Size = new System.Drawing.Size(200, 20);
-            this.birthday.TabIndex = 0;
+            this.birthday.Size = new System.Drawing.Size(244, 60);
+            this.birthday.TabIndex = 17;
+            this.birthday.TabStop = false;
+            this.birthday.Text = "Birthday";
+            // 
+            // bday
+            // 
+            this.bday.Location = new System.Drawing.Point(18, 24);
+            this.bday.Name = "bday";
+            this.bday.Size = new System.Drawing.Size(200, 20);
+            this.bday.TabIndex = 0;
             // 
             // extras
             // 
@@ -736,6 +727,15 @@
             this.calculate.TabIndex = 20;
             this.calculate.Text = "Subtotal";
             this.calculate.UseVisualStyleBackColor = true;
+            this.calculate.Click += new System.EventHandler(this.calculate_Click);
+            // 
+            // display1
+            // 
+            this.display1.Location = new System.Drawing.Point(5, 18);
+            this.display1.Name = "display1";
+            this.display1.Size = new System.Drawing.Size(201, 352);
+            this.display1.TabIndex = 0;
+            this.display1.Text = "";
             // 
             // Form1
             // 
@@ -751,22 +751,22 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "City Gym Registration";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.address.ResumeLayout(false);
+            this.address.PerformLayout();
             this.MembershipType.ResumeLayout(false);
             this.MembershipType.PerformLayout();
             this.payFreq.ResumeLayout(false);
             this.payFreq.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
+            this.orderdeets.ResumeLayout(false);
             this.payMethod.ResumeLayout(false);
             this.payMethod.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
+            this.emergency.ResumeLayout(false);
+            this.emergency.PerformLayout();
             this.Duration.ResumeLayout(false);
             this.Duration.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
+            this.birthday.ResumeLayout(false);
             this.extras.ResumeLayout(false);
             this.extras.PerformLayout();
             this.ResumeLayout(false);
@@ -781,7 +781,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox address;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label9;
@@ -800,8 +800,8 @@
         private System.Windows.Forms.RadioButton fortnightly;
         private System.Windows.Forms.RadioButton weekly;
         private System.Windows.Forms.RadioButton annually;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.DateTimePicker birthday;
+        private System.Windows.Forms.GroupBox birthday;
+        private System.Windows.Forms.DateTimePicker bday;
         private System.Windows.Forms.Button confirm;
         private System.Windows.Forms.GroupBox Duration;
         private System.Windows.Forms.RadioButton twoyear;
@@ -814,7 +814,7 @@
         private System.Windows.Forms.MaskedTextBox addCity;
         private System.Windows.Forms.MaskedTextBox addStreet;
         private System.Windows.Forms.TextBox phone;
-        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox emergency;
         private System.Windows.Forms.TextBox emRel;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox emNum;
@@ -822,8 +822,7 @@
         private System.Windows.Forms.TextBox emCon;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox payMethod;
-        private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.RichTextBox display1;
+        private System.Windows.Forms.GroupBox orderdeets;
         private System.Windows.Forms.RadioButton Cash;
         private System.Windows.Forms.RadioButton BT;
         private System.Windows.Forms.RadioButton CC;
@@ -831,6 +830,7 @@
         private System.Windows.Forms.Button calculate;
         private System.Windows.Forms.TextBox lname;
         private System.Windows.Forms.TextBox fname;
+        private System.Windows.Forms.RichTextBox display1;
     }
 }
 
