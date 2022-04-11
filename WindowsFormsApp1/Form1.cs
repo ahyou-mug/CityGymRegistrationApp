@@ -152,7 +152,7 @@ namespace WindowsFormsApp1
         private void calculate_Click(object sender, EventArgs e)
         {
             oCust.Cust["First Name"] = fname.Text;// assign fname text box to customer.fname property
-            oCust.Cust["Last Name"]= lname.Text;// same
+            oCust.Cust["Last Name"] = lname.Text;// same
             oCust.Cust["Phone"] = phone.Text;
             oCust.Cust["Birthday"] = bday.Text;
             oCust.Cust["Street Number"] = addNum.Text;
@@ -200,25 +200,25 @@ namespace WindowsFormsApp1
             {
                 if (rdo.Checked)// if the box is checked
                 {
-                    oCust.Cust["Weekly Price"] += oCust.Prices[rdo.Name];// adds price to weekly total
-                    oCust.Cust.Add("Extras "+i, oCust.Terms[rdo.Name]);
+                    oCust.Cust["Weekly Price"] += (oCust.Prices[rdo.Name]);// adds price to weekly total
+                    oCust.Cust.Add("Extras " + i, oCust.Terms[rdo.Name]);
                     i++;
                 }
             }
             if (oCust.Cust["Payment Method"] == "Direct Debit")// if customer is paying by direct debit
             {
-                oCust.Cust["Weekly Price"] = ToFloat(oCust.Cust["Weekly Price"]) * 0.99;// multiply their weekly total by .99 to apply 1% discount
+                oCust.Cust["Weekly Amount"] = oCust.Cust["Weekly Price"] * 0.99;// multiply their weekly total by .99 to apply 1% discount
             }
             switch (oCust.Cust["Payment Frequency"])
             {
                 case "Fortnightly":
-                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Price"] * 2;
+                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 2;
                     break;
                 case "Monthly":
-                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Price"] * 4;
+                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 4;
                     break;
                 case "Annually":
-                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Price"] * 52;
+                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 52;
                     break;
             }
             // display order subtotal and details for checking before submission ***Doesn't print list of customer extras***
@@ -228,21 +228,72 @@ namespace WindowsFormsApp1
             }
 
         }
-        private void confirm_Click(object sender, EventArgs e)
+
+        private void confirm_Click_1(object sender, EventArgs e)
         {
-            string path = @"C:\Users\Local user\OneDrive - TOPNZ STUDENT (MYOPENPOLYTECHNIC)\Desktop\MyTest.txt"; // set path for file
-            if (!File.Exists(path)) // check if file exists
+            string path = @"C:\Users\Local user\OneDrive - TOPNZ STUDENT (MYOPENPOLYTECHNIC)\Desktop\Customers.csv"; // set path for file
+            bool exists = true;
+            if (!File.Exists(path)) // if file does not exist, create
             {
                 StreamWriter sw = File.CreateText(path); // create file
+                exists = false;
+                sw.Close();
             }
-            TextWriter wr = new StreamWriter(path);
+            using (FileStream fs = new FileStream(path, FileMode.Append, FileAccess.Write))
+            using (StreamWriter sw = new StreamWriter(fs))
             {
-                foreach (var ind in oCust.Cust.Keys)
+                string line1 = "";
+                string line2 = "";
+                if (exists == false)
                 {
-                    wr.WriteLine(ind + " = " + oCust.Cust[ind]);
+                    foreach (var ind in oCust.Cust.Keys)
+                    {
+                        if (line1 == "")
+                        {
+                            line1 = ind + ",";
+                        }
+                        else
+                        {
+                            line1 = (line1 + ind + ",");
+                        }
+                    }
+                    foreach (var ind in oCust.Cust.Keys)
+                    {
+                        if (line2 == "")
+                        {
+                            line2 = oCust.Cust[ind] + ",";
+                        }
+                        else
+                        {
+                            line2 = (line2 + oCust.Cust[ind] + ",");
+                        }
+                    }
+                    sw.WriteLine(line1);
+                    sw.WriteLine(line2);
                 }
+                else
+                {
+                    foreach (var ind in oCust.Cust.Keys)
+                    {
+                        if (line2 == "")
+                        {
+                            line2 = oCust.Cust[ind] + ",";
+                        }
+                        else
+                        {
+                            line2 = (line2 + oCust.Cust[ind] + ",");
+                        }
+                    }
+                    sw.WriteLine(line2);
+                }
+                sw.Close();
             }
-            wr.Close();
+        }
+
+        private void cancel_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
+

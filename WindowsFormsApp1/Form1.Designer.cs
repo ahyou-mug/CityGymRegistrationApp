@@ -56,6 +56,7 @@
             this.lname = new System.Windows.Forms.TextBox();
             this.fname = new System.Windows.Forms.TextBox();
             this.orderdeets = new System.Windows.Forms.GroupBox();
+            this.display1 = new System.Windows.Forms.RichTextBox();
             this.payMethod = new System.Windows.Forms.GroupBox();
             this.Cash = new System.Windows.Forms.RadioButton();
             this.BT = new System.Windows.Forms.RadioButton();
@@ -84,7 +85,6 @@
             this.cancel = new System.Windows.Forms.Button();
             this.confirm = new System.Windows.Forms.Button();
             this.calculate = new System.Windows.Forms.Button();
-            this.display1 = new System.Windows.Forms.RichTextBox();
             this.address.SuspendLayout();
             this.MembershipType.SuspendLayout();
             this.payFreq.SuspendLayout();
@@ -410,6 +410,14 @@
             this.orderdeets.TabStop = false;
             this.orderdeets.Text = "Order Details";
             // 
+            // display1
+            // 
+            this.display1.Location = new System.Drawing.Point(5, 18);
+            this.display1.Name = "display1";
+            this.display1.Size = new System.Drawing.Size(201, 352);
+            this.display1.TabIndex = 0;
+            this.display1.Text = "";
+            // 
             // payMethod
             // 
             this.payMethod.Controls.Add(this.Cash);
@@ -706,6 +714,7 @@
             this.cancel.TabIndex = 19;
             this.cancel.Text = "Cancel";
             this.cancel.UseVisualStyleBackColor = false;
+            this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
             // confirm
             // 
@@ -717,6 +726,7 @@
             this.confirm.TabIndex = 18;
             this.confirm.Text = "Confirm Order";
             this.confirm.UseVisualStyleBackColor = false;
+            this.confirm.Click += new System.EventHandler(this.confirm_Click_1);
             // 
             // calculate
             // 
@@ -728,14 +738,6 @@
             this.calculate.Text = "Subtotal";
             this.calculate.UseVisualStyleBackColor = true;
             this.calculate.Click += new System.EventHandler(this.calculate_Click);
-            // 
-            // display1
-            // 
-            this.display1.Location = new System.Drawing.Point(5, 18);
-            this.display1.Name = "display1";
-            this.display1.Size = new System.Drawing.Size(201, 352);
-            this.display1.TabIndex = 0;
-            this.display1.Text = "";
             // 
             // Form1
             // 
