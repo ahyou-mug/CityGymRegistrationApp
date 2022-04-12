@@ -12,10 +12,10 @@ using System.IO;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class RegistrationForm : Form
     {
 
-        public Form1()
+        public RegistrationForm()
         {
             InitializeComponent();
         }
@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
         {
             Dictionary<string, dynamic> cust = new Dictionary<string, dynamic>()
             {
-                
+
             };
             public Dictionary<string, dynamic> Cust { get => cust; set => cust = value; }
             Dictionary<string, int> prices = new Dictionary<string, int>()
@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
             {"PT",20},
             {"Diet",20},
             {"vids",2},
-            {"quater",0},
+            {"quarter",0},
             {"half", 0},
             {"oneyear",-2},
             {"twoyear",-5},
@@ -52,14 +52,14 @@ namespace WindowsFormsApp1
             {"PT", "Personal Trainer"},
             {"Diet", "Diet Consultation"},
             {"vids", "Online Tutorials"},
-            {"quater", "3 Months"},
+            {"quarter", "3 Months"},
             {"half", "6 Months"},
             {"oneyear", "12 Months"},
             {"twoyear","2 Years"},
             {"DD","Direct Debit"},
             {"BT", "Bank Transfer"},
             {"CC", "Credit Card"},
-            {"cash", "Cash" },
+            {"Cash", "Cash" },
             {"weekly", "Weekly"},
             {"fortnightly","Fortnightly"},
             {"monthly", "Monthly"},
@@ -151,127 +151,225 @@ namespace WindowsFormsApp1
 
         private void calculate_Click(object sender, EventArgs e)
         {
-            oCust.Cust["First Name"] = fname.Text;// assign fname text box to customer.fname property
-            oCust.Cust["Last Name"] = lname.Text;// same
-            oCust.Cust["Phone"] = phone.Text;
-            oCust.Cust["Birthday"] = bday.Text;
-            oCust.Cust["Street Number"] = addNum.Text;
-            oCust.Cust["Street Name"] = addStreet.Text;
-            oCust.Cust["City"] = addCity.Text;
-            oCust.Cust["District"] = addState.Text;
-            oCust.Cust["Post Code"] = postcode.Text;
-            oCust.Cust["Emergency Contact"] = emCon.Text;
-            oCust.Cust["Emergency Phone"] = emNum.Text;
-            oCust.Cust["Emergency Relationship"] = emRel.Text;
-            oCust.Cust.Add("Weekly Price", 0);
-            foreach (var rdo in MembershipType.Controls.OfType<RadioButton>())// loop through buttons in MembershipType groupbox
+            bool j = true; // j is true if form is complete
+            foreach (Control c in this.Controls)
             {
-                if (rdo.Checked)// if button is checked
+                // if parent text boxes (name etc.) are empty then set j = false
+                if (c.GetType() == typeof(TextBox))
                 {
-                    oCust.Cust["Membership Type"] = oCust.Terms[rdo.Name];// assign value of box to customer.membershipType property
-                    oCust.Cust["Weekly Price"] = oCust.Prices[oCust.Cust["Membership Type"]];// add corresponding value from customer.prices dict to weekly price
+                    if (c.Text == "")
+                    {
+                        j = false;
+                    }
                 }
-            }
-            foreach (var rdo in Duration.Controls.OfType<RadioButton>())// loop through buttons in Duration groupbox
-            {
-                if (rdo.Checked)// if button is checked
+                // if parent text boxes good then check controls in group boxes
+                else if (c.GetType() == typeof(GroupBox))
                 {
-                    oCust.Cust["Membership Duration"] = oCust.Terms[rdo.Name];// add membership duration value to customer class
-                    oCust.Cust["Weekly Price"] += oCust.Prices[rdo.Name];// add value to weekly price (add -nums for discounts)
-                }
-            }
-            foreach (var rdo in payFreq.Controls.OfType<RadioButton>())// loop through payment frequency buttons
-            {
-                if (rdo.Checked)// if button is checked
-                {
-                    oCust.Cust["Payment Frequency"] = oCust.Terms[rdo.Name];// asssign value to payment frequency property
-                }
-            }
-            foreach (var rdo in payMethod.Controls.OfType<RadioButton>())// loop through pay method buttons
-            {
-                if (rdo.Checked)// if button is checked
-                {
-                    oCust.Cust["Payment Method"] = oCust.Terms[rdo.Name];// assign payment method to customer
-                }
-            }
 
-            int i = 1;// Only for counter iteration
-            foreach (var rdo in extras.Controls.OfType<CheckBox>())// loop through additional options
-            {
-                if (rdo.Checked)// if the box is checked
-                {
-                    oCust.Cust["Weekly Price"] += (oCust.Prices[rdo.Name]);// adds price to weekly total
-                    oCust.Cust.Add("Extras " + i, oCust.Terms[rdo.Name]);
-                    i++;
+                    int k = 0; // k is used to determine if there are any blank parts to the form
+                    // Loop through radio buttons
+                    foreach (var x in c.Controls.OfType<RadioButton>())
+                    {
+                        if (!x.Checked)
+                        {
+                            k++; // if unchecked increment k
+                        }
+                        else if (x.Checked)
+                        {
+                            k = 0;
+                            x.BackColor = System.Drawing.Color.White; // if checked ensure background is white
+                        }
+                    }
+                    // Loop through checkboxes
+                    foreach (var x in c.Controls.OfType<CheckBox>())
+                    {
+                        if (!x.Checked)
+                        {
+                            k++; // if unchecked increment k
+                        }
+                        if (x.Checked)
+                        {
+                            k = 0;
+                            x.BackColor = System.Drawing.Color.White; // if checked ensure background is white
+                        }
+                    }
+                    // Default white, if not selected and k > 0 then highlight as empty
+                    foreach (var x in c.Controls.OfType<RadioButton>())
+                    {
+                        if (k == 0)
+                        {
+                            x.BackColor = System.Drawing.Color.White;
+                        }
+                        else if (k > 0 && !x.Checked)
+                        {
+                            x.BackColor = System.Drawing.Color.Red;
+                        }
+                    }
+                    // Check text box values
+                    foreach (var x in c.Controls.OfType<TextBox>())
+                    {
+                        if (x.Text == "")
+                        {
+                            k++;
+                            x.BackColor = System.Drawing.Color.Red; // highlight red if empty
+                        }
+                    }
+                    // Check datetimepicker
+                    foreach (Control x in c.Controls.OfType<DateTimePicker>())
+                    {
+                        if (x.Text == "")
+                        {
+                            k++;
+                            x.BackColor = System.Drawing.Color.Red; // Red if empty
+                        }
+                    }
+                    // If any controls are empty set J = False to display message
+                    if (k > 0)
+                    {
+                        j = false;
+                    }
                 }
             }
-            if (oCust.Cust["Payment Method"] == "Direct Debit")// if customer is paying by direct debit
+            if (!j) // if j is false and form not complete display message
             {
-                oCust.Cust["Weekly Amount"] = oCust.Cust["Weekly Price"] * 0.99;// multiply their weekly total by .99 to apply 1% discount
+                System.Windows.Forms.MessageBox.Show("There are empty sections in registration - please complete to proceed");
+                oCust.Cust.Clear();
             }
-            switch (oCust.Cust["Payment Frequency"])
+            else
             {
-                case "Fortnightly":
-                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 2;
-                    break;
-                case "Monthly":
-                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 4;
-                    break;
-                case "Annually":
-                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 52;
-                    break;
-            }
-            // display order subtotal and details for checking before submission ***Doesn't print list of customer extras***
-            foreach (var key in oCust.Cust.Keys)
-            {
-                display1.Text = display1.Text + "\n" + key + ": \n" + oCust.Cust[key];
-            }
+                oCust.Cust["Customer Number"] = Guid.NewGuid().ToString("N");
+                oCust.Cust["First Name"] = fname.Text;// assign fname text box to customer.fname property
+                oCust.Cust["Last Name"] = lname.Text;// same
+                oCust.Cust["Phone"] = phone.Text;
+                oCust.Cust["Birthday"] = bday.Text;
+                oCust.Cust["Street Number"] = addNum.Text;
+                oCust.Cust["Street Name"] = addStreet.Text;
+                oCust.Cust["City"] = addCity.Text;
+                oCust.Cust["District"] = addState.Text;
+                oCust.Cust["Post Code"] = postcode.Text;
+                oCust.Cust["Emergency Contact"] = emCon.Text;
+                oCust.Cust["Emergency Phone"] = emNum.Text;
+                oCust.Cust["Emergency Relationship"] = emRel.Text;
+                oCust.Cust.Add("Weekly Price", 0);
+                foreach (var rdo in MembershipType.Controls.OfType<RadioButton>())// loop through buttons in MembershipType groupbox
+                {
+                    if (rdo.Checked)// if button is checked
+                    {
+                        oCust.Cust["Membership Type"] = oCust.Terms[rdo.Name];// assign value of box to customer.membershipType property
+                        oCust.Cust["Weekly Price"] = oCust.Prices[oCust.Cust["Membership Type"]];// add corresponding value from customer.prices dict to weekly price
+                    }
+                }
+                foreach (var rdo in Duration.Controls.OfType<RadioButton>())// loop through buttons in Duration groupbox
+                {
+                    if (rdo.Checked)// if button is checked
+                    {
+                        oCust.Cust["Membership Duration"] = oCust.Terms[rdo.Name];// add membership duration value to customer class
+                        oCust.Cust["Weekly Price"] += oCust.Prices[rdo.Name];// add value to weekly price (add -nums for discounts)
+                    }
+                }
+                foreach (var rdo in payFreq.Controls.OfType<RadioButton>())// loop through payment frequency buttons
+                {
+                    if (rdo.Checked)// if button is checked
+                    {
+                        oCust.Cust["Payment Frequency"] = oCust.Terms[rdo.Name];// asssign value to payment frequency property
+                    }
+                }
+                foreach (var rdo in payMethod.Controls.OfType<RadioButton>())// loop through pay method buttons
+                {
+                    if (rdo.Checked)// if button is checked
+                    {
+                        oCust.Cust["Payment Method"] = oCust.Terms[rdo.Name];// assign payment method to customer
+                    }
+                }
 
+                int i = 1;// Only for counter iteration
+                foreach (var rdo in extras.Controls.OfType<CheckBox>())// loop through additional options
+                {
+                    if (rdo.Checked)// if the box is checked
+                    {
+                        oCust.Cust["Weekly Price"] += (oCust.Prices[rdo.Name]);// adds price to weekly total
+                        oCust.Cust.Add("Extras " + i, oCust.Terms[rdo.Name]);
+                        i++;
+                    }
+                }
+                if (oCust.Cust["Payment Method"] == "Direct Debit")// if customer is paying by direct debit
+                {
+                    oCust.Cust["Weekly Amount"] = oCust.Cust["Weekly Price"] * 0.99;// multiply their weekly total by .99 to apply 1% discount
+                }
+                else
+                {
+                    oCust.Cust["Weekly Amount"] = oCust.Cust["Weekly Price"];
+                }
+                switch (oCust.Cust["Payment Frequency"])
+                {
+                    case "Fortnightly":
+                        oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 2;
+                        break;
+                    case "Monthly":
+                        oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 4;
+                        break;
+                    case "Annually":
+                        oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 52;
+                        break;
+                }
+                // display order subtotal and details for checking before submission ***Doesn't print list of customer extras***
+                foreach (var key in oCust.Cust.Keys)
+                {
+                    display1.Text = display1.Text + "\n" + key + ": \n" + oCust.Cust[key];
+                }
+
+            }
         }
 
         private void confirm_Click_1(object sender, EventArgs e)
         {
+            foreach (var x in orderdeets.Controls.OfType<TextBox>())
+                if (x.Text == "")
+                {
+                    if (x.Text == "")
+                    {
+                        System.Windows.Forms.MessageBox.Show("Invalid entry, please Complete the following to proceed: {c.Name}");
+                        break;
+                    }
+                }
             string path = @"C:\Users\Local user\OneDrive - TOPNZ STUDENT (MYOPENPOLYTECHNIC)\Desktop\Customers.csv"; // set path for file
-            bool exists = true;
-            if (!File.Exists(path)) // if file does not exist, create
+            string line1 = "";
+            string line2 = "";
+            if (!File.Exists(path)) // if file does not exist, create & write headers
             {
                 StreamWriter sw = File.CreateText(path); // create file
-                exists = false;
+                foreach (var ind in oCust.Cust.Keys)
+                {
+                    if (line1 == "")
+                    {
+                        line1 = ind + ",";
+                    }
+                    else
+                    {
+                        line1 = (line1 + ind + ",");
+                    }
+                }
+                foreach (var ind in oCust.Cust.Keys)
+                {
+                    if (line2 == "")
+                    {
+                        line2 = oCust.Cust[ind] + ",";
+                    }
+                    else
+                    {
+                        line2 = (line2 + oCust.Cust[ind] + ",");
+                    }
+                }
+                sw.WriteLine(line1);
+                sw.WriteLine(line2);
                 sw.Close();
+                System.Windows.Forms.MessageBox.Show("Success! New Customer Added.");
+                this.clearForm();
             }
-            using (FileStream fs = new FileStream(path, FileMode.Append, FileAccess.Write))
-            using (StreamWriter sw = new StreamWriter(fs))
+            else if (File.Exists(path))
             {
-                string line1 = "";
-                string line2 = "";
-                if (exists == false)
-                {
-                    foreach (var ind in oCust.Cust.Keys)
-                    {
-                        if (line1 == "")
-                        {
-                            line1 = ind + ",";
-                        }
-                        else
-                        {
-                            line1 = (line1 + ind + ",");
-                        }
-                    }
-                    foreach (var ind in oCust.Cust.Keys)
-                    {
-                        if (line2 == "")
-                        {
-                            line2 = oCust.Cust[ind] + ",";
-                        }
-                        else
-                        {
-                            line2 = (line2 + oCust.Cust[ind] + ",");
-                        }
-                    }
-                    sw.WriteLine(line1);
-                    sw.WriteLine(line2);
-                }
-                else
+                using (FileStream fs = new FileStream(path, FileMode.Append, FileAccess.Write))
+                using (StreamWriter sw = new StreamWriter(fs))
                 {
                     foreach (var ind in oCust.Cust.Keys)
                     {
@@ -285,15 +383,78 @@ namespace WindowsFormsApp1
                         }
                     }
                     sw.WriteLine(line2);
+                    sw.Close();
+                    System.Windows.Forms.MessageBox.Show("Success! New Customer Added.");
+                    this.clearForm();
                 }
-                sw.Close();
             }
+
         }
+
 
         private void cancel_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
+
+
+        private void clearForm()
+        {
+            foreach (Control c in this.Controls)
+            {
+                // if parent text boxes (name etc.) are empty then set j = false
+                if (c.GetType() == typeof(TextBox))
+                {
+                    c.Text = "";
+                    c.BackColor = System.Drawing.Color.White;
+
+                }
+            }
+            // if parent text boxes good then check controls in group boxes
+            foreach (Controls groupBox in this.Controls) // <--------------------------------------------- build errors, cannot cast. need to rewrite throughout loop
+            {
+                // Loop through radio buttons
+                foreach (var x in groupBox.Controls.OfType<RadioButton>())
+                {
+                    x.Checked = false;
+                    x.BackColor = System.Drawing.Color.White;
+                }
+                // Loop through checkboxes
+                foreach (var x in groupBox.Controls.OfType<CheckBox>())
+                {
+                    x.Checked = false;
+                    x.BackColor = System.Drawing.Color.White;
+                }
+                // Default white, if not selected and k > 0 then highlight as empty
+                foreach (var x in groupBox.Controls.OfType<RadioButton>())
+                {
+                    x.Checked = false;
+                    x.BackColor = System.Drawing.Color.White;
+                }
+                // Check text box values
+                foreach (var x in groupBox.Controls.OfType<TextBox>())
+                {
+                    x.Text = "";
+                    x.BackColor = System.Drawing.Color.White; // highlight red if empty
+
+                }
+                // Check datetimepicker
+                foreach (Control x in groupBox.Controls.OfType<DateTimePicker>())
+                {
+                    x.Text = "";
+                    x.BackColor = System.Drawing.Color.Red; // Red if empty
+
+                }
+
+            }
+        }
+
+        private void form_clear_Click(object sender, EventArgs e)
+        {
+            this.clearForm();
+        }
     }
 }
+
 

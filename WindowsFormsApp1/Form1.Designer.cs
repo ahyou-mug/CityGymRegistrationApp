@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class Form1
+    partial class RegistrationForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrationForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.addNum = new System.Windows.Forms.TextBox();
@@ -85,6 +85,7 @@
             this.cancel = new System.Windows.Forms.Button();
             this.confirm = new System.Windows.Forms.Button();
             this.calculate = new System.Windows.Forms.Button();
+            this.form_clear = new System.Windows.Forms.Button();
             this.address.SuspendLayout();
             this.MembershipType.SuspendLayout();
             this.payFreq.SuspendLayout();
@@ -720,18 +721,18 @@
             // 
             this.confirm.BackColor = System.Drawing.Color.LimeGreen;
             this.confirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirm.Location = new System.Drawing.Point(265, 535);
+            this.confirm.Location = new System.Drawing.Point(452, 535);
             this.confirm.Name = "confirm";
             this.confirm.Size = new System.Drawing.Size(181, 37);
             this.confirm.TabIndex = 18;
-            this.confirm.Text = "Confirm Order";
+            this.confirm.Text = "Confirm Registration";
             this.confirm.UseVisualStyleBackColor = false;
             this.confirm.Click += new System.EventHandler(this.confirm_Click_1);
             // 
             // calculate
             // 
             this.calculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.calculate.Location = new System.Drawing.Point(452, 535);
+            this.calculate.Location = new System.Drawing.Point(254, 535);
             this.calculate.Name = "calculate";
             this.calculate.Size = new System.Drawing.Size(139, 37);
             this.calculate.TabIndex = 20;
@@ -739,19 +740,30 @@
             this.calculate.UseVisualStyleBackColor = true;
             this.calculate.Click += new System.EventHandler(this.calculate_Click);
             // 
-            // Form1
+            // form_clear
+            // 
+            this.form_clear.Location = new System.Drawing.Point(95, 535);
+            this.form_clear.Name = "form_clear";
+            this.form_clear.Size = new System.Drawing.Size(150, 36);
+            this.form_clear.TabIndex = 21;
+            this.form_clear.Text = "New Registration";
+            this.form_clear.UseVisualStyleBackColor = true;
+            this.form_clear.Click += new System.EventHandler(this.form_clear_Click);
+            // 
+            // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(878, 599);
+            this.Controls.Add(this.form_clear);
             this.Controls.Add(this.calculate);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.confirm);
             this.Controls.Add(this.groupBox4);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "Form1";
+            this.Name = "RegistrationForm";
             this.Text = "City Gym Registration";
             this.address.ResumeLayout(false);
             this.address.PerformLayout();
@@ -833,6 +845,7 @@
         private System.Windows.Forms.TextBox lname;
         private System.Windows.Forms.TextBox fname;
         private System.Windows.Forms.RichTextBox display1;
+        private System.Windows.Forms.Button form_clear;
     }
 }
 
