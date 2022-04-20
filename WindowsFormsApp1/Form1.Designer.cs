@@ -121,7 +121,7 @@
             this.addNum.Margin = new System.Windows.Forms.Padding(2);
             this.addNum.Name = "addNum";
             this.addNum.Size = new System.Drawing.Size(47, 20);
-            this.addNum.TabIndex = 7;
+            this.addNum.TabIndex = 3;
             // 
             // label5
             // 
@@ -159,7 +159,7 @@
             this.postcode.Margin = new System.Windows.Forms.Padding(2);
             this.postcode.Name = "postcode";
             this.postcode.Size = new System.Drawing.Size(76, 20);
-            this.postcode.TabIndex = 20;
+            this.postcode.TabIndex = 7;
             // 
             // addCity
             // 
@@ -167,7 +167,7 @@
             this.addCity.Margin = new System.Windows.Forms.Padding(2);
             this.addCity.Name = "addCity";
             this.addCity.Size = new System.Drawing.Size(161, 20);
-            this.addCity.TabIndex = 18;
+            this.addCity.TabIndex = 5;
             // 
             // addStreet
             // 
@@ -175,7 +175,7 @@
             this.addStreet.Margin = new System.Windows.Forms.Padding(2);
             this.addStreet.Name = "addStreet";
             this.addStreet.Size = new System.Drawing.Size(160, 20);
-            this.addStreet.TabIndex = 17;
+            this.addStreet.TabIndex = 4;
             // 
             // label8
             // 
@@ -217,7 +217,7 @@
             this.MembershipType.Name = "MembershipType";
             this.MembershipType.Padding = new System.Windows.Forms.Padding(2);
             this.MembershipType.Size = new System.Drawing.Size(221, 110);
-            this.MembershipType.TabIndex = 16;
+            this.MembershipType.TabIndex = 12;
             this.MembershipType.TabStop = false;
             this.MembershipType.Text = "Membership Type:";
             // 
@@ -228,7 +228,7 @@
             this.Premium.Margin = new System.Windows.Forms.Padding(2);
             this.Premium.Name = "Premium";
             this.Premium.Size = new System.Drawing.Size(123, 17);
-            this.Premium.TabIndex = 5;
+            this.Premium.TabIndex = 2;
             this.Premium.TabStop = true;
             this.Premium.Text = "Premium ($20/week)";
             this.Premium.UseVisualStyleBackColor = true;
@@ -240,7 +240,7 @@
             this.Regular.Margin = new System.Windows.Forms.Padding(2);
             this.Regular.Name = "Regular";
             this.Regular.Size = new System.Drawing.Size(120, 17);
-            this.Regular.TabIndex = 4;
+            this.Regular.TabIndex = 1;
             this.Regular.TabStop = true;
             this.Regular.Text = "Regular ($15/week)";
             this.Regular.UseVisualStyleBackColor = true;
@@ -252,7 +252,7 @@
             this.Basic.Margin = new System.Windows.Forms.Padding(2);
             this.Basic.Name = "Basic";
             this.Basic.Size = new System.Drawing.Size(109, 17);
-            this.Basic.TabIndex = 3;
+            this.Basic.TabIndex = 0;
             this.Basic.TabStop = true;
             this.Basic.Text = "Basic ($10/week)";
             this.Basic.UseVisualStyleBackColor = true;
@@ -268,7 +268,7 @@
             this.payFreq.Name = "payFreq";
             this.payFreq.Padding = new System.Windows.Forms.Padding(2);
             this.payFreq.Size = new System.Drawing.Size(110, 110);
-            this.payFreq.TabIndex = 17;
+            this.payFreq.TabIndex = 14;
             this.payFreq.TabStop = false;
             this.payFreq.Text = "Payment:";
             // 
@@ -384,7 +384,7 @@
             this.bday.Location = new System.Drawing.Point(263, 194);
             this.bday.Name = "bday";
             this.bday.Size = new System.Drawing.Size(200, 20);
-            this.bday.TabIndex = 0;
+            this.bday.TabIndex = 8;
             // 
             // region
             // 
@@ -426,7 +426,7 @@
             this.region.Location = new System.Drawing.Point(70, 169);
             this.region.Name = "region";
             this.region.Size = new System.Drawing.Size(121, 21);
-            this.region.TabIndex = 29;
+            this.region.TabIndex = 6;
             this.region.Text = "Select...";
             // 
             // emRel
@@ -435,7 +435,7 @@
             this.emRel.Margin = new System.Windows.Forms.Padding(2);
             this.emRel.Name = "emRel";
             this.emRel.Size = new System.Drawing.Size(145, 20);
-            this.emRel.TabIndex = 5;
+            this.emRel.TabIndex = 11;
             // 
             // label11
             // 
@@ -452,7 +452,7 @@
             this.fname.Location = new System.Drawing.Point(70, 16);
             this.fname.Name = "fname";
             this.fname.Size = new System.Drawing.Size(137, 20);
-            this.fname.TabIndex = 27;
+            this.fname.TabIndex = 0;
             // 
             // emNum
             // 
@@ -460,7 +460,7 @@
             this.emNum.Margin = new System.Windows.Forms.Padding(2);
             this.emNum.Name = "emNum";
             this.emNum.Size = new System.Drawing.Size(145, 20);
-            this.emNum.TabIndex = 3;
+            this.emNum.TabIndex = 10;
             // 
             // label10
             // 
@@ -478,14 +478,14 @@
             this.emCon.Margin = new System.Windows.Forms.Padding(2);
             this.emCon.Name = "emCon";
             this.emCon.Size = new System.Drawing.Size(145, 20);
-            this.emCon.TabIndex = 1;
+            this.emCon.TabIndex = 9;
             // 
             // lname
             // 
             this.lname.Location = new System.Drawing.Point(70, 42);
             this.lname.Name = "lname";
             this.lname.Size = new System.Drawing.Size(137, 20);
-            this.lname.TabIndex = 28;
+            this.lname.TabIndex = 1;
             // 
             // label3
             // 
@@ -503,7 +503,7 @@
             this.phone.Margin = new System.Windows.Forms.Padding(2);
             this.phone.Name = "phone";
             this.phone.Size = new System.Drawing.Size(152, 20);
-            this.phone.TabIndex = 23;
+            this.phone.TabIndex = 2;
             // 
             // orderdeets
             // 
@@ -523,6 +523,7 @@
             this.display1.Name = "display1";
             this.display1.Size = new System.Drawing.Size(201, 376);
             this.display1.TabIndex = 0;
+            this.display1.TabStop = false;
             this.display1.Text = "";
             // 
             // payMethod
@@ -536,7 +537,7 @@
             this.payMethod.Name = "payMethod";
             this.payMethod.Padding = new System.Windows.Forms.Padding(2);
             this.payMethod.Size = new System.Drawing.Size(244, 59);
-            this.payMethod.TabIndex = 25;
+            this.payMethod.TabIndex = 16;
             this.payMethod.TabStop = false;
             this.payMethod.Text = "Payment Method";
             // 
@@ -559,7 +560,7 @@
             this.BT.Margin = new System.Windows.Forms.Padding(2);
             this.BT.Name = "BT";
             this.BT.Size = new System.Drawing.Size(92, 17);
-            this.BT.TabIndex = 2;
+            this.BT.TabIndex = 1;
             this.BT.TabStop = true;
             this.BT.Text = "Bank Transfer";
             this.BT.UseVisualStyleBackColor = true;
@@ -571,7 +572,7 @@
             this.CC.Margin = new System.Windows.Forms.Padding(2);
             this.CC.Name = "CC";
             this.CC.Size = new System.Drawing.Size(77, 17);
-            this.CC.TabIndex = 1;
+            this.CC.TabIndex = 2;
             this.CC.TabStop = true;
             this.CC.Text = "Credit Card";
             this.CC.UseVisualStyleBackColor = true;
@@ -599,7 +600,7 @@
             this.Duration.Name = "Duration";
             this.Duration.Padding = new System.Windows.Forms.Padding(2);
             this.Duration.Size = new System.Drawing.Size(112, 110);
-            this.Duration.TabIndex = 20;
+            this.Duration.TabIndex = 13;
             this.Duration.TabStop = false;
             this.Duration.Text = "Duration:";
             // 
@@ -662,7 +663,7 @@
             this.extras.Name = "extras";
             this.extras.Padding = new System.Windows.Forms.Padding(2);
             this.extras.Size = new System.Drawing.Size(223, 59);
-            this.extras.TabIndex = 0;
+            this.extras.TabIndex = 15;
             this.extras.TabStop = false;
             this.extras.Text = "Optional Extras";
             // 
@@ -717,7 +718,8 @@
             this.cancel.Location = new System.Drawing.Point(20, 519);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(122, 37);
-            this.cancel.TabIndex = 19;
+            this.cancel.TabIndex = 20;
+            this.cancel.TabStop = false;
             this.cancel.Text = "Exit";
             this.cancel.UseVisualStyleBackColor = false;
             // 
@@ -729,8 +731,10 @@
             this.confirm.Name = "confirm";
             this.confirm.Size = new System.Drawing.Size(181, 37);
             this.confirm.TabIndex = 18;
+            this.confirm.TabStop = false;
             this.confirm.Text = "Sign Up";
             this.confirm.UseVisualStyleBackColor = false;
+            this.confirm.Click += new System.EventHandler(this.confirm_Click);
             // 
             // calculate
             // 
@@ -738,16 +742,19 @@
             this.calculate.Location = new System.Drawing.Point(384, 520);
             this.calculate.Name = "calculate";
             this.calculate.Size = new System.Drawing.Size(139, 37);
-            this.calculate.TabIndex = 20;
-            this.calculate.Text = "Confirm";
+            this.calculate.TabIndex = 17;
+            this.calculate.TabStop = false;
+            this.calculate.Text = "Confirm Order";
             this.calculate.UseVisualStyleBackColor = true;
+            this.calculate.Click += new System.EventHandler(this.calculate_Click);
             // 
             // form_clear
             // 
             this.form_clear.Location = new System.Drawing.Point(148, 520);
             this.form_clear.Name = "form_clear";
             this.form_clear.Size = new System.Drawing.Size(150, 36);
-            this.form_clear.TabIndex = 21;
+            this.form_clear.TabIndex = 19;
+            this.form_clear.TabStop = false;
             this.form_clear.Text = "Clear/New Registration";
             this.form_clear.UseVisualStyleBackColor = true;
             // 
