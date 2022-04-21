@@ -36,8 +36,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.postcode = new System.Windows.Forms.TextBox();
-            this.addCity = new System.Windows.Forms.MaskedTextBox();
-            this.addStreet = new System.Windows.Forms.MaskedTextBox();
+            this.addCity = new System.Windows.Forms.TextBox();
+            this.addStreet = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -381,9 +381,11 @@
             // 
             // bday
             // 
+            this.bday.CustomFormat = "    dd  MMMMMMMMM  yyyy";
+            this.bday.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.bday.Location = new System.Drawing.Point(263, 194);
             this.bday.Name = "bday";
-            this.bday.Size = new System.Drawing.Size(200, 20);
+            this.bday.Size = new System.Drawing.Size(150, 20);
             this.bday.TabIndex = 8;
             // 
             // region
@@ -722,6 +724,7 @@
             this.cancel.TabStop = false;
             this.cancel.Text = "Exit";
             this.cancel.UseVisualStyleBackColor = false;
+            this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
             // confirm
             // 
@@ -757,6 +760,7 @@
             this.form_clear.TabStop = false;
             this.form_clear.Text = "Clear/New Registration";
             this.form_clear.UseVisualStyleBackColor = true;
+            this.form_clear.Click += new System.EventHandler(this.form_clear_Click);
             // 
             // RegistrationForm
             // 
@@ -826,8 +830,8 @@
         private System.Windows.Forms.RadioButton quarter;
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.TextBox postcode;
-        private System.Windows.Forms.MaskedTextBox addCity;
-        private System.Windows.Forms.MaskedTextBox addStreet;
+        private System.Windows.Forms.TextBox addCity;
+        private System.Windows.Forms.TextBox addStreet;
         private System.Windows.Forms.TextBox phone;
         private System.Windows.Forms.TextBox emRel;
         private System.Windows.Forms.Label label11;

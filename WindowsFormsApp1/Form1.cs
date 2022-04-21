@@ -40,7 +40,8 @@ namespace WindowsFormsApp1
          
 
         // ------------------------------------------------------------------------------------ Methods & Classes separated from controls for cleanliness
-        bool conf = false; // variable for ensuring confirm button has been used
+        bool conf = false; // variable for ensuring confirm button has been used & form is valid
+        const string path = @"C:\Users\Local user\OneDrive - TOPNZ STUDENT (MYOPENPOLYTECHNIC)\Desktop\Customers.csv"; // set path for file
 
         /* Customer Object
          * Contains dicts for customer class
@@ -75,7 +76,7 @@ namespace WindowsFormsApp1
             {"Basic", "Basic"},
             {"Regular","Regular"},
             {"Premium","Premium"},
-            {"alltime", "24/7"},
+            {"alltime", "24 Hour Access"},
             {"PT", "Personal Trainer"},
             {"Diet", "Diet Consultation"},
             {"vids", "Online Tutorials"},
@@ -101,14 +102,14 @@ namespace WindowsFormsApp1
         // for cleanliness have separated from Calculate/Confirm
         private void validation()
         {
-            int j = 0;
-            bool k = false;
+            int errorCount = 0; // error counter
+            bool noError = false; // error bool
             foreach (var cont in PersonalDetails.Controls.OfType<TextBox>())
             {
                 if (cont.Text == "") // if textbox empty color red
                 { 
                     cont.BackColor = System.Drawing.Color.Aqua;
-                    j++;
+                    errorCount++; // increment error count
                 }
             }
             foreach (var cont in PersonalDetails.Controls.OfType<ComboBox>())
@@ -116,7 +117,7 @@ namespace WindowsFormsApp1
                 if (cont.SelectedItem == null) // something has not been entered in combobox
                 {
                     cont.BackColor = System.Drawing.Color.Aqua;
-                    j++;
+                    errorCount++; // increment error count
                 }
             }
             foreach (var cont in PersonalDetails.Controls.OfType<DateTimePicker>())
@@ -126,7 +127,7 @@ namespace WindowsFormsApp1
                 if (cont.Value.Year < min || cont.Value.Year > max)
                 {
                     cont.CalendarTitleBackColor = System.Drawing.Color.Aqua;
-                    j++;
+                    errorCount++; // increment error count
                 }
             }
 
@@ -134,61 +135,61 @@ namespace WindowsFormsApp1
             {
                 if (cont.Checked)
                 {
-                    k = true; // if any of the items are checked then j = true
+                    noError = true; // if any of the items are checked then j = true
                 }
             }
-            if (!k)
+            if (!noError)
             {
                 MembershipType.BackColor = System.Drawing.Color.Aqua; // if not checked color groupbox
-                j++;
+                errorCount++; // increment error count
             }
-            k = false;
+            noError = false;
             foreach (var cont in Duration.Controls.OfType<RadioButton>())
             {
                 if (cont.Checked)
                 {
-                    k = true; // if any of items checked then j = true
+                    noError = true; // if any of items checked then j = true
                 }
             }
-            if (!k)
+            if (!noError)
             {
                 Duration.BackColor = System.Drawing.Color.Aqua; // if not checked color groupbox
-                j++;
+                errorCount++; // increment error count
             }
-            k = false;
+            noError = false;
             foreach (var cont in payFreq.Controls.OfType<RadioButton>())
             {
                 if (cont.Checked)
                 {
-                    k = true; // if any of items checked then j = true
+                    noError = true; // if any of items checked then j = true
                 }
             }
-            if (!k)
+            if (!noError)
             {
                 payFreq.BackColor = System.Drawing.Color.Aqua; // if not checked color groupbox
-                j++;
+                errorCount++; // increment error count
             }
-            k = false;
+            noError = false;
             foreach (var cont in payMethod.Controls.OfType<RadioButton>())
             {
                 if (cont.Checked)
                 {
-                    k = true; // if any of items checked then j = true
+                    noError = true; // if any of items checked then j = true
                 }
             }
-            if (!k)
+            if (!noError)
             {
                 payMethod.BackColor = System.Drawing.Color.Aqua; // if not checked color groupbox
-                j++;
+                errorCount++; // increment error count
             }
-            if (j > 0 || k == false)
+            if (errorCount > 0 || noError == false) // if error count > 0 or error bool false
             {
                 System.Windows.Forms.MessageBox.Show("There are empty sections in registration - please complete to proceed");
                 oCust.Cust.Clear(); // empties customer.dict to prevent key double ups on resubmission
             }
-            else if (j == 0 && k == true)
+            else if (errorCount == 0 && noError == true) // if error count =0 and noerror = true
             {
-                conf = true;
+                conf = true; // form is valid and ready to submit
             }
         }
 
@@ -199,66 +200,80 @@ namespace WindowsFormsApp1
         private void clearForm()
         {
             // clear text boxes
-            foreach (var box in PersonalDetails.Controls.OfType<TextBox>())
-            {
-                box.Text = "";
-                box.BackColor = System.Drawing.Color.White;// reset color to white for new form
-            }
-            // reset datetimepicker
-            foreach (Control x in PersonalDetails.Controls.OfType<DateTimePicker>())
+            foreach (Control x in PersonalDetails.Controls.OfType<TextBox>())
             {
                 x.Text = "";
+                x.BackColor = System.Drawing.Color.White;// reset color to white for new form
+            }
+            // reset datetimepicker
+            foreach (var x in PersonalDetails.Controls.OfType<DateTimePicker>())
+            {
+                x.Value = DateTime.Today;
                 x.BackColor = System.Drawing.Color.White;
             }
             // reset combo box
-            foreach (Control x in PersonalDetails.Controls.OfType<ComboBox>())
+            foreach (var x in PersonalDetails.Controls.OfType<ComboBox>())
             {
-                x.Text = "";
+                x.SelectedIndex = -1;
                 x.BackColor = System.Drawing.Color.White;
             }
             // reset controls in MembershipType groupbox
-            foreach (var rdo in MembershipType.Controls.OfType<RadioButton>()) // <--------------------------------------------- build errors, cannot cast. need to rewrite throughout loop
+            foreach (var rdo in MembershipType.Controls.OfType<RadioButton>())
             {
                 rdo.Checked = false;
-                rdo.BackColor = System.Drawing.Color.White;
+                rdo.BackColor = SystemColors.Control;
             }
             // reset buttons in Duration groupbox
             foreach (var rdo in Duration.Controls.OfType<RadioButton>())
             {
                 rdo.Checked = false;
-                rdo.BackColor = System.Drawing.Color.White;
+                rdo.BackColor = SystemColors.Control;
             }
             // reset payment frequency buttons
             foreach (var rdo in payFreq.Controls.OfType<RadioButton>())
             {
                 rdo.Checked = false;
-                rdo.BackColor = System.Drawing.Color.White;
+                rdo.BackColor = SystemColors.Control;
             }
             // reset pay method buttons
             foreach (var rdo in payMethod.Controls.OfType<RadioButton>())
             {
                 rdo.Checked = false;
-                rdo.BackColor = System.Drawing.Color.White;
+                rdo.BackColor = SystemColors.Control;
             }
             // reset checkboxes
             foreach (var x in extras.Controls.OfType<CheckBox>())
             {
                 x.Checked = false;
-                x.BackColor = System.Drawing.Color.White;
+                x.BackColor = SystemColors.Control;
             }
         }
 
-        // AddData
-        // Adds customer data to customer dictionary
+        // FileOpen error handling
+        // Checks if file is open and displays warning message
+        private bool FileOpen()
+        {
+            try
+            {
+                FileStream fs = new FileStream(path, FileMode.Append, FileAccess.Write);
+                StreamWriter sw = new StreamWriter(fs);
+                sw.Close();
+            }
+            catch (System.IO.IOException e)
+            {
+                System.Windows.Forms.MessageBox.Show("Error! File is already in use! Please close the file and try again."); // display erorr message\
+                return true;
+            }
+            return false;
+        }
+//-------------------------------------------------------------------------- Button controls
 
-        //-------------------------------------------------------------------------- Button controls
-
-        /// Confirm Button
-        /// Runs through boxes and outputs text in 'order details'
-        /// for user to confirm before sign up. Checks for empty
-        /// boxes and highlights. Calculates weekly price and
-        /// payment amount.
-        private void calculate_Click(object sender, EventArgs e)
+/// Confirm Button
+/// Runs through boxes and outputs text in 'order details'
+/// for user to confirm before sign up. Checks for empty
+/// boxes and highlights. Calculates weekly price and
+/// payment amount.
+private void calculate_Click(object sender, EventArgs e)
         {
             validation(); // validate form
             if (conf) // if form validated then add data to customer.dict
@@ -345,7 +360,7 @@ namespace WindowsFormsApp1
                 }
             }
         }
-        
+
 
 
         /// Confirm Registration
@@ -355,62 +370,73 @@ namespace WindowsFormsApp1
         /// Sends alert box confirming successful operation
         private void confirm_Click(object sender, EventArgs e)
         {
-            string path = @"C:\Users\Local user\OneDrive - TOPNZ STUDENT (MYOPENPOLYTECHNIC)\Desktop\Customers.csv"; // set path for file
-            string line1 = "";
-            string line2 = "";
-            if (!File.Exists(path)) // if file does not exist, create & write headers
+            if (FileOpen() == false)
             {
-                StreamWriter sw = File.CreateText(path); // create file
-                foreach (var ind in oCust.Cust.Keys)
+                System.Threading.Thread.Sleep(1000);// Time for closure to register on system, prevents exception when opening the file
+                string line1 = "";
+                string line2 = "";
+
+                if (!File.Exists(path)) // if file does not exist, create & write headers
                 {
-                    if (line1 == "")
+                    StreamWriter sw = File.CreateText(path); // create file
+                    foreach (var ind in oCust.Cust.Keys)
                     {
-                        line1 = ind; // first header item (dict keys)
+                        if (line1 == "")
+                        {
+                            line1 = ind; // first header item (dict keys)
+                        }
+                        else
+                        {
+                            line1 = (line1 + "," + ind); // append other header item (dict keys)
+                        }
                     }
-                    else
-                    {
-                        line1 = (line1 + "," + ind); // append other header item (dict keys)
-                    }
-                }
-                foreach (var ind in oCust.Cust.Keys)
-                {
-                    if (line2 == "")
-                    {
-                        line2 = oCust.Cust[ind]; // first customer item (dict.keys)
-                    }
-                    else
-                    {
-                        line2 = (line2 + "," + oCust.Cust[ind]); // append other customer items (dict.keys)
-                    }
-                }
-                sw.WriteLine(line1); // write headers to file
-                sw.WriteLine(line2); // write customer to file
-                sw.Close(); // close file
-                System.Windows.Forms.MessageBox.Show("Success! New Customer Added."); // display success message
-                this.clearForm(); //clear form
-            }
-            else if (File.Exists(path)) // if file exists just write customer to line
-            {
-                using (FileStream fs = new FileStream(path, FileMode.Append, FileAccess.Write))
-                using (StreamWriter sw = new StreamWriter(fs))
-                {
                     foreach (var ind in oCust.Cust.Keys)
                     {
                         if (line2 == "")
                         {
-                            line2 = oCust.Cust[ind]; // first customer item with "," to make .csv format
+                            line2 = oCust.Cust[ind]; // first customer item (dict.keys)
                         }
                         else
                         {
-                            line2 = (line2 + "," + oCust.Cust[ind]); // append other customer items with preceeding comma
+                            line2 = (line2 + "," + oCust.Cust[ind]); // append other customer items (dict.keys)
                         }
                     }
-                    sw.WriteLine(line2); // write entire customer dict on one line
+                    sw.WriteLine(line1); // write headers to file
+                    sw.WriteLine(line2); // write customer to file
                     sw.Close(); // close file
-                    System.Windows.Forms.MessageBox.Show("Success! New Customer Added."); // display successful message
-                    this.clearForm(); //clearform
+                    System.Windows.Forms.MessageBox.Show("Success! New Customer Added."); // display success message
+                    this.clearForm(); //clear form
+                }
+                else if (File.Exists(path)) // if file exists just write customer to line
+                {
+                    using (FileStream fs = new FileStream(path, FileMode.Append, FileAccess.Write))
+                    using (StreamWriter sw = new StreamWriter(fs))
+                    {
+                        foreach (var ind in oCust.Cust.Keys)
+                        {
+                            if (line2 == "")
+                            {
+                                line2 = oCust.Cust[ind]; // first customer item with "," to make .csv format
+                            }
+                            else
+                            {
+                                line2 = (line2 + "," + oCust.Cust[ind]); // append other customer items with preceeding comma
+                            }
+                        }
+                        sw.WriteLine(line2); // write entire customer dict on one line
+                        sw.Close(); // close file
+                        System.Windows.Forms.MessageBox.Show("Success! New Customer Added."); // display successful message
+                        this.clearForm(); //clearform
+                    }
                 }
             }
+        }
+
+        // Clear Form
+        // Clears form content/Resets form
+        private void form_clear_Click(object sender, EventArgs e)
+        {
+            clearForm();
         }
 
         /// Cancel
@@ -418,12 +444,6 @@ namespace WindowsFormsApp1
         private void cancel_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-
-        private void form_clear_Click(object sender, EventArgs e)
-        {
-            this.clearForm();
         }
     }
 }
