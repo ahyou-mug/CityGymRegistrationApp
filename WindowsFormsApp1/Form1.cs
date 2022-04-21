@@ -27,26 +27,27 @@ namespace WindowsFormsApp1
          * CityGymRegistration is a registration form for a 
          * fake gym. This form enables the collection of
          * customer details and adding to a .csv file.
+         
+             * * RunTime NOTE 1:
+             * * Please set file path to appropriate location
+             * * in constant variable 'path' below
+             * * RunTime NOTE 2:
+             * * This program writes headers out every time
+             * * If being used in production then OpenXML should be used.
+             * * OpenXML is outside the scope of this assignment.
          */
 
-        /* Construction Notes:
-         * Need to fix validation loop control refs
-        */
 
-        /// Customer = Class of details
-        /// Contains dict of prices & variations
-        /// Contains dict of Customer details
-        /// Customer details added on Confirm/Sign Up
-         
+
 
         // ------------------------------------------------------------------------------------ Methods & Classes separated from controls for cleanliness
         bool conf = false; // variable for ensuring confirm button has been used & form is valid
         const string path = @"C:\Users\Local user\OneDrive - TOPNZ STUDENT (MYOPENPOLYTECHNIC)\Desktop\Customers.csv"; // set path for file
 
-        /* Customer Object
-         * Contains dicts for customer class
-         * Allows calculations & data collection
-         * */
+        /// Customer = Class of details
+        /// Contains dict of prices & variations
+        /// Contains dict of Customer details
+        /// Customer details added on Confirm/Sign Up
         public class Customer
         {
             Dictionary<string, dynamic> cust = new Dictionary<string, dynamic>()
@@ -71,7 +72,7 @@ namespace WindowsFormsApp1
         };
             public Dictionary<string, int> Prices { get => prices; set => prices = value; }
 
-            Dictionary<string, string> terms = new Dictionary<string, string>()
+            Dictionary<string, dynamic> terms = new Dictionary<string, dynamic>()
         {
             {"Basic", "Basic"},
             {"Regular","Regular"},
@@ -93,7 +94,7 @@ namespace WindowsFormsApp1
             {"monthly", "Monthly"},
             {"annually", "Annually"}
         };
-            public Dictionary<string, string> Terms { get => terms; set => terms = value; }
+            public Dictionary<string, dynamic> Terms { get => terms; set => terms = value; }
         }
         Customer oCust = new Customer(); // Create new object oCust of class Customer(), accessible to all buttons/methods
 
@@ -126,8 +127,9 @@ namespace WindowsFormsApp1
                 var min = DateTime.Today.Year - 100; // todays date - 100 years, excludes people too old
                 if (cont.Value.Year < min || cont.Value.Year > max)
                 {
-                    cont.CalendarTitleBackColor = System.Drawing.Color.Aqua;
+                    cont.BackColor = System.Drawing.Color.Aqua;
                     errorCount++; // increment error count
+                    System.Windows.Forms.MessageBox.Show("Birthday is incorrect, must be older than 16 or younger than 100.");
                 }
             }
 
@@ -220,25 +222,25 @@ namespace WindowsFormsApp1
             // reset controls in MembershipType groupbox
             foreach (var rdo in MembershipType.Controls.OfType<RadioButton>())
             {
-                rdo.Checked = false;
+                //rdo.Checked = false; // commented to stop tab stops from changing
                 rdo.BackColor = SystemColors.Control;
             }
             // reset buttons in Duration groupbox
             foreach (var rdo in Duration.Controls.OfType<RadioButton>())
             {
-                rdo.Checked = false;
+                //rdo.Checked = false; // commented to stop tab stops from changing
                 rdo.BackColor = SystemColors.Control;
             }
             // reset payment frequency buttons
             foreach (var rdo in payFreq.Controls.OfType<RadioButton>())
             {
-                rdo.Checked = false;
+                //rdo.Checked = false; // commented to stop tab stops from changing
                 rdo.BackColor = SystemColors.Control;
             }
             // reset pay method buttons
             foreach (var rdo in payMethod.Controls.OfType<RadioButton>())
             {
-                rdo.Checked = false;
+                //rdo.Checked = false; // commented to stop tab stops from changing
                 rdo.BackColor = SystemColors.Control;
             }
             // reset checkboxes
@@ -247,24 +249,31 @@ namespace WindowsFormsApp1
                 x.Checked = false;
                 x.BackColor = SystemColors.Control;
             }
+            // reset Customer details box
+            foreach (var x in orderdeets.Controls.OfType<RichTextBox>())
+            {
+                x.Text = "";
+                x.BackColor = SystemColors.Control;
+            }
+            oCust.Cust.Clear(); // Clears customer dict as no values in form, prevents exception
         }
 
         // FileOpen error handling
         // Checks if file is open and displays warning message
         private bool FileOpen()
         {
-            try
+            try // try to access file
             {
                 FileStream fs = new FileStream(path, FileMode.Append, FileAccess.Write);
                 StreamWriter sw = new StreamWriter(fs);
                 sw.Close();
             }
-            catch (System.IO.IOException e)
+            catch (System.IO.IOException) // if cannot access file display errror
             {
-                System.Windows.Forms.MessageBox.Show("Error! File is already in use! Please close the file and try again."); // display erorr message\
+                System.Windows.Forms.MessageBox.Show("Error! File is already in use! Please close the file and try again."); // display erorr message
                 return true;
             }
-            return false;
+            return false; // if can access file then file not open
         }
 //-------------------------------------------------------------------------- Button controls
 
@@ -341,22 +350,39 @@ private void calculate_Click(object sender, EventArgs e)
                 {
                     oCust.Cust["Weekly Amount"] = oCust.Cust["Weekly Price"];
                 }
-                switch (oCust.Cust["Payment Frequency"])
+                if (oCust.Cust["Payment Frequency"] == "Fortnightly")
                 {
-                    case "Fortnightly":
-                        oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 2; // double for fortnightly
-                        break;
-                    case "Monthly":
-                        oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 4; // *4 for monthly
-                        break;
-                    case "Annually":
-                        oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 52; // *52 for annually
-                        break;
+                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 2; // double for fortnightly
                 }
-                // display order subtotal and details for checking before submission ***Doesn't print list of customer extras***
+                else if (oCust.Cust["Payment Frequency"] == "Monthly")
+                {
+                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 4; // *4 for monthly
+                }
+                else if (oCust.Cust["Payment Frequency"] == "Annually")
+                {
+                    // if membership is 12 months or more then * 52
+                    if (oCust.Cust["Membership Duration"] == "12 Months" || oCust.Cust["Membership Duration"] == "2 Years")
+                    {
+                        oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 52;
+                    }
+                    // else multiply by 26 weeks/6 months
+                    else if (oCust.Cust["Membership Duration"] == "6 Months")
+                    {
+                        oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 26;
+                    }
+                    // else multiply by 12 weeks/3 months
+                    else if (oCust.Cust["Membership Duration"] == "3 Months")
+                    {
+                        oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 12;
+                    }
+                }
+                // display order subtotal and details for checking before submission
                 foreach (var key in oCust.Cust.Keys)
                 {
-                    display1.Text = display1.Text + "\n" + key + ": \n" + oCust.Cust[key];
+                    display1.SelectionFont = new Font(display1.Font, FontStyle.Bold);
+                    display1.SelectedText += key + ":\n";
+                    display1.SelectionFont = new Font(display1.Font, FontStyle.Regular);
+                    display1.SelectedText += oCust.Cust[key] + "\n";
                 }
             }
         }
@@ -414,6 +440,14 @@ private void calculate_Click(object sender, EventArgs e)
                     {
                         foreach (var ind in oCust.Cust.Keys)
                         {
+                            if (line1 == "")
+                            {
+                                line1 = ind; // first header item (dict keys)
+                            }
+                            else
+                            {
+                                line1 = (line1 + "," + ind); // append other header item (dict keys)
+                            }
                             if (line2 == "")
                             {
                                 line2 = oCust.Cust[ind]; // first customer item with "," to make .csv format
@@ -423,10 +457,12 @@ private void calculate_Click(object sender, EventArgs e)
                                 line2 = (line2 + "," + oCust.Cust[ind]); // append other customer items with preceeding comma
                             }
                         }
-                        sw.WriteLine(line2); // write entire customer dict on one line
+                        sw.WriteLine(line1); // write keys on line
+                        sw.WriteLine(line2); // write customer dict on line below
                         sw.Close(); // close file
                         System.Windows.Forms.MessageBox.Show("Success! New Customer Added."); // display successful message
                         this.clearForm(); //clearform
+                        oCust.Cust.Clear();
                     }
                 }
             }
