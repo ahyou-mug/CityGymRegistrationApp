@@ -101,9 +101,12 @@ namespace WindowsFormsApp1
         Customer oCust = new Customer(); // Create new object oCust of class Customer(), accessible to all buttons/methods
 
 
+        /* Validation()
         // Method to validate control inputs
         // for cleanliness have separated from Calculate/Confirm
-        private void validation()
+        // returns conf = false if form not complete
+        */
+        private void Validation()
         {
             int errorCount = 0; // error counter
             bool noError = false; // error bool
@@ -197,10 +200,11 @@ namespace WindowsFormsApp1
             }
         }
 
-        /// ClearForm
-        /// Checks the controls in the form
-        /// If has been marked in red sets bg to white
-        /// Clears text boxes if not empty
+        /* ClearForm
+        // Checks the controls in the form
+        // If has been marked in red sets bg to white
+        // Clears text boxes if not empty
+        */
         private void clearForm()
         {
             // clear text boxes
@@ -260,8 +264,141 @@ namespace WindowsFormsApp1
             oCust.Cust.Clear(); // Clears customer dict as no values in form, prevents exception
         }
 
-        // FileOpen error handling
-        // Checks if file is open and displays warning message
+
+
+
+        /* GetData - gets data from form
+        // Runs through boxes and outputs text in 'order details'
+        // for user to confirm before sign up. Checks for empty
+        // boxes and highlights. Calculates weekly price and
+        // payment amount.
+        */
+        public void GetData()
+        {
+            oCust.Cust["Customer Number"] = Guid.NewGuid().ToString("N");
+            oCust.Cust["First Name"] = fname.Text;// assign fname text box to customer.fname property
+            oCust.Cust["Last Name"] = lname.Text;// same
+            oCust.Cust["Phone"] = phone.Text;
+            oCust.Cust["Birthday"] = bday.Text;
+            oCust.Cust["Street Number"] = addNum.Text;
+            oCust.Cust["Street Name"] = addStreet.Text;
+            oCust.Cust["City"] = addCity.Text;
+            oCust.Cust["District"] = region.Text;
+            oCust.Cust["Post Code"] = postcode.Text;
+            oCust.Cust["Emergency Contact"] = emCon.Text;
+            oCust.Cust["Emergency Phone"] = emNum.Text;
+            oCust.Cust["Emergency Relationship"] = emRel.Text;
+            oCust.Cust.Add("Weekly Price", 0);
+            // loop through buttons in MembershipType groupbox
+            foreach (var rdo in MembershipType.Controls.OfType<RadioButton>())
+            {
+                if (rdo.Checked)// if button is checked
+                {
+                    oCust.Cust["Membership Type"] = oCust.Terms[rdo.Name];// assign value of box to customer.membershipType property
+                    oCust.Cust["Weekly Price"] = oCust.Prices[oCust.Cust["Membership Type"]];// add corresponding value from customer.prices dict to weekly price
+                }
+            }
+            // loop through buttons in Duration groupbox
+            foreach (var rdo in Duration.Controls.OfType<RadioButton>())
+            {
+                if (rdo.Checked)// if button is checked
+                {
+                    oCust.Cust["Membership Duration"] = oCust.Terms[rdo.Name];// add membership duration value to customer class
+                    oCust.Cust["Weekly Price"] += oCust.Prices[rdo.Name];// add value to weekly price (add -nums for discounts)
+                }
+            }
+            // loop through payment frequency buttons
+            foreach (var rdo in payFreq.Controls.OfType<RadioButton>())
+            {
+                if (rdo.Checked)// if button is checked
+                {
+                    oCust.Cust["Payment Frequency"] = oCust.Terms[rdo.Name];// asssign value to payment frequency property
+                }
+            }
+            // loop through pay method buttons
+            foreach (var rdo in payMethod.Controls.OfType<RadioButton>())
+            {
+                if (rdo.Checked)// if button is checked
+                {
+                    oCust.Cust["Payment Method"] = oCust.Terms[rdo.Name];// assign payment method to customer
+                }
+            }
+            // Calculate base memeberhips 1%
+            if (oCust.Cust["Payment Method"] == "Direct Debit")// if customer is paying by direct debit
+            {
+                oCust.Cust["Weekly Amount"] = oCust.Cust["Weekly Price"] * 0.99;// multiply their weekly total by .99 to apply 1% discount
+            }
+            else
+            {
+                oCust.Cust["Weekly Amount"] = oCust.Cust["Weekly Price"];
+            }
+            // Loop through extras and add to base
+            int i = 1;// Only for counter iteration
+            foreach (var rdo in extras.Controls.OfType<CheckBox>())
+            {
+                if (rdo.Checked)// if the box is checked
+                {
+                    oCust.Cust["Weekly Price"] += (oCust.Prices[rdo.Name]);// adds price to weekly total
+                    oCust.Cust.Add("Extras " + i, oCust.Terms[rdo.Name]);
+                    i++;
+                }
+            }
+            // Multiplies the weekly amount for the appropriate payment frequencey
+            if (oCust.Cust["Payment Frequency"] == "Fortnightly")
+            {
+                oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 2; // double for fortnightly
+            }
+            else if (oCust.Cust["Payment Frequency"] == "Monthly")
+            {
+                oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 4; // *4 for monthly
+            }
+            else if (oCust.Cust["Payment Frequency"] == "Annually")
+            {
+                // if membership is 12 months or more then * 52
+                if (oCust.Cust["Membership Duration"] == "12 Months" || oCust.Cust["Membership Duration"] == "2 Years")
+                {
+                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 52;
+                }
+                // else multiply by 26 weeks/6 months
+                else if (oCust.Cust["Membership Duration"] == "6 Months")
+                {
+                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 26;
+                }
+                // else multiply by 12 weeks/3 months
+                else if (oCust.Cust["Membership Duration"] == "3 Months")
+                {
+                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 12;
+                }
+            }
+        }
+
+
+
+
+
+        // DisplayInfo
+        // Outputs info to the Display box
+        public void DisplayInfo()
+        {
+            // display order subtotal and details for checking before submission
+            foreach (var key in oCust.Cust.Keys)
+            {
+                display1.SelectionFont = new Font(display1.Font, FontStyle.Bold);
+                display1.SelectedText += key + ":\n";
+                display1.SelectionFont = new Font(display1.Font, FontStyle.Regular);
+                display1.SelectedText += oCust.Cust[key] + "\n";
+            }
+        }
+
+
+
+
+
+        /* FileOpen
+        // Checks if file is open
+        // Displays message if file open
+        // returns false if file closed
+        */
         private bool FileOpen()
         {
             try // try to access file
@@ -277,136 +414,57 @@ namespace WindowsFormsApp1
             }
             return false; // if can access file then file not open
         }
-//-------------------------------------------------------------------------- Button controls
 
-/// Confirm Button
-/// Runs through boxes and outputs text in 'order details'
-/// for user to confirm before sign up. Checks for empty
-/// boxes and highlights. Calculates weekly price and
-/// payment amount.
-private void calculate_Click(object sender, EventArgs e)
+
+
+
+        /* ExportData
+        // Checks if file exists, if not creates it
+        // Takes input from dictionary
+        // Stores in text file in .csv format
+        // Sends alert box confirming successful operation
+        */
+        public void ExportData()
         {
-            validation(); // validate form
-            if (conf) // if form validated then add data to customer.dict
-            {
-                oCust.Cust["Customer Number"] = Guid.NewGuid().ToString("N");
-                oCust.Cust["First Name"] = fname.Text;// assign fname text box to customer.fname property
-                oCust.Cust["Last Name"] = lname.Text;// same
-                oCust.Cust["Phone"] = phone.Text;
-                oCust.Cust["Birthday"] = bday.Text;
-                oCust.Cust["Street Number"] = addNum.Text;
-                oCust.Cust["Street Name"] = addStreet.Text;
-                oCust.Cust["City"] = addCity.Text;
-                oCust.Cust["District"] = region.Text;
-                oCust.Cust["Post Code"] = postcode.Text;
-                oCust.Cust["Emergency Contact"] = emCon.Text;
-                oCust.Cust["Emergency Phone"] = emNum.Text;
-                oCust.Cust["Emergency Relationship"] = emRel.Text;
-                oCust.Cust.Add("Weekly Price", 0);
-                foreach (var rdo in MembershipType.Controls.OfType<RadioButton>())// loop through buttons in MembershipType groupbox
-                {
-                    if (rdo.Checked)// if button is checked
-                    {
-                        oCust.Cust["Membership Type"] = oCust.Terms[rdo.Name];// assign value of box to customer.membershipType property
-                        oCust.Cust["Weekly Price"] = oCust.Prices[oCust.Cust["Membership Type"]];// add corresponding value from customer.prices dict to weekly price
-                    }
-                }
-                foreach (var rdo in Duration.Controls.OfType<RadioButton>())// loop through buttons in Duration groupbox
-                {
-                    if (rdo.Checked)// if button is checked
-                    {
-                        oCust.Cust["Membership Duration"] = oCust.Terms[rdo.Name];// add membership duration value to customer class
-                        oCust.Cust["Weekly Price"] += oCust.Prices[rdo.Name];// add value to weekly price (add -nums for discounts)
-                    }
-                }
-                foreach (var rdo in payFreq.Controls.OfType<RadioButton>())// loop through payment frequency buttons
-                {
-                    if (rdo.Checked)// if button is checked
-                    {
-                        oCust.Cust["Payment Frequency"] = oCust.Terms[rdo.Name];// asssign value to payment frequency property
-                    }
-                }
-                foreach (var rdo in payMethod.Controls.OfType<RadioButton>())// loop through pay method buttons
-                {
-                    if (rdo.Checked)// if button is checked
-                    {
-                        oCust.Cust["Payment Method"] = oCust.Terms[rdo.Name];// assign payment method to customer
-                    }
-                }
+            string line1 = "";
+            string line2 = "";
 
-                int i = 1;// Only for counter iteration
-                foreach (var rdo in extras.Controls.OfType<CheckBox>())// loop through additional options
+            if (!File.Exists(path)) // if file does not exist, create & write headers
+            {
+                StreamWriter sw = File.CreateText(path); // create file
+                foreach (var ind in oCust.Cust.Keys)
                 {
-                    if (rdo.Checked)// if the box is checked
+                    if (line1 == "")
                     {
-                        oCust.Cust["Weekly Price"] += (oCust.Prices[rdo.Name]);// adds price to weekly total
-                        oCust.Cust.Add("Extras " + i, oCust.Terms[rdo.Name]);
-                        i++;
+                        line1 = ind; // first header item (dict keys)
+                    }
+                    else
+                    {
+                        line1 = (line1 + "," + ind); // append other header item (dict keys)
                     }
                 }
-                if (oCust.Cust["Payment Method"] == "Direct Debit")// if customer is paying by direct debit
+                foreach (var ind in oCust.Cust.Keys)
                 {
-                    oCust.Cust["Weekly Amount"] = oCust.Cust["Weekly Price"] * 0.99;// multiply their weekly total by .99 to apply 1% discount
-                }
-                else
-                {
-                    oCust.Cust["Weekly Amount"] = oCust.Cust["Weekly Price"];
-                }
-                if (oCust.Cust["Payment Frequency"] == "Fortnightly")
-                {
-                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 2; // double for fortnightly
-                }
-                else if (oCust.Cust["Payment Frequency"] == "Monthly")
-                {
-                    oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 4; // *4 for monthly
-                }
-                else if (oCust.Cust["Payment Frequency"] == "Annually")
-                {
-                    // if membership is 12 months or more then * 52
-                    if (oCust.Cust["Membership Duration"] == "12 Months" || oCust.Cust["Membership Duration"] == "2 Years")
+                    if (line2 == "")
                     {
-                        oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 52;
+                        line2 = oCust.Cust[ind]; // first customer item (dict.keys)
                     }
-                    // else multiply by 26 weeks/6 months
-                    else if (oCust.Cust["Membership Duration"] == "6 Months")
+                    else
                     {
-                        oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 26;
-                    }
-                    // else multiply by 12 weeks/3 months
-                    else if (oCust.Cust["Membership Duration"] == "3 Months")
-                    {
-                        oCust.Cust["Payment Amount"] = oCust.Cust["Weekly Amount"] * 12;
+                        line2 = (line2 + "," + oCust.Cust[ind]); // append other customer items (dict.keys)
                     }
                 }
-                // display order subtotal and details for checking before submission
-                foreach (var key in oCust.Cust.Keys)
-                {
-                    display1.SelectionFont = new Font(display1.Font, FontStyle.Bold);
-                    display1.SelectedText += key + ":\n";
-                    display1.SelectionFont = new Font(display1.Font, FontStyle.Regular);
-                    display1.SelectedText += oCust.Cust[key] + "\n";
-                }
+                sw.WriteLine(line1); // write headers to file
+                sw.WriteLine(line2); // write customer to file
+                sw.Close(); // close file
+                System.Windows.Forms.MessageBox.Show("Success! New Customer Added."); // display success message
+                this.clearForm(); //clear form
             }
-        }
-
-
-
-        /// Confirm Registration
-        /// Checks if file exists, if not creates it
-        /// Takes input from dictionary
-        /// Stores in text file in .csv format
-        /// Sends alert box confirming successful operation
-        private void confirm_Click(object sender, EventArgs e)
-        {
-            if (FileOpen() == false)
+            else if (File.Exists(path)) // if file exists just write customer to line
             {
-                System.Threading.Thread.Sleep(1000);// Time for closure to register on system, prevents exception when opening the file
-                string line1 = "";
-                string line2 = "";
-
-                if (!File.Exists(path)) // if file does not exist, create & write headers
+                using (FileStream fs = new FileStream(path, FileMode.Append, FileAccess.Write))
+                using (StreamWriter sw = new StreamWriter(fs))
                 {
-                    StreamWriter sw = File.CreateText(path); // create file
                     foreach (var ind in oCust.Cust.Keys)
                     {
                         if (line1 == "")
@@ -417,56 +475,49 @@ private void calculate_Click(object sender, EventArgs e)
                         {
                             line1 = (line1 + "," + ind); // append other header item (dict keys)
                         }
-                    }
-                    foreach (var ind in oCust.Cust.Keys)
-                    {
                         if (line2 == "")
                         {
-                            line2 = oCust.Cust[ind]; // first customer item (dict.keys)
+                            line2 = oCust.Cust[ind]; // first customer item with "," to make .csv format
                         }
                         else
                         {
-                            line2 = (line2 + "," + oCust.Cust[ind]); // append other customer items (dict.keys)
+                            line2 = (line2 + "," + oCust.Cust[ind]); // append other customer items with preceeding comma
                         }
                     }
-                    sw.WriteLine(line1); // write headers to file
-                    sw.WriteLine(line2); // write customer to file
+                    sw.WriteLine(line1); // write keys on line
+                    sw.WriteLine(line2); // write customer dict on line below
                     sw.Close(); // close file
-                    System.Windows.Forms.MessageBox.Show("Success! New Customer Added."); // display success message
-                    this.clearForm(); //clear form
+                    System.Windows.Forms.MessageBox.Show("Success! New Customer Added."); // display successful message
+                    this.clearForm(); //clearform
+                    oCust.Cust.Clear();
                 }
-                else if (File.Exists(path)) // if file exists just write customer to line
-                {
-                    using (FileStream fs = new FileStream(path, FileMode.Append, FileAccess.Write))
-                    using (StreamWriter sw = new StreamWriter(fs))
-                    {
-                        foreach (var ind in oCust.Cust.Keys)
-                        {
-                            if (line1 == "")
-                            {
-                                line1 = ind; // first header item (dict keys)
-                            }
-                            else
-                            {
-                                line1 = (line1 + "," + ind); // append other header item (dict keys)
-                            }
-                            if (line2 == "")
-                            {
-                                line2 = oCust.Cust[ind]; // first customer item with "," to make .csv format
-                            }
-                            else
-                            {
-                                line2 = (line2 + "," + oCust.Cust[ind]); // append other customer items with preceeding comma
-                            }
-                        }
-                        sw.WriteLine(line1); // write keys on line
-                        sw.WriteLine(line2); // write customer dict on line below
-                        sw.Close(); // close file
-                        System.Windows.Forms.MessageBox.Show("Success! New Customer Added."); // display successful message
-                        this.clearForm(); //clearform
-                        oCust.Cust.Clear();
-                    }
-                }
+            }
+        }
+//-------------------------------------------------------------------------- Button controls
+
+        /// Confirm Order Button
+        /// Calculates values and stores in dict
+        private void calculate_Click(object sender, EventArgs e)
+        {
+            Validation(); // validate form
+            if (conf) // if form validated then add data to customer.dict
+            {
+                oCust.Cust.Clear();
+                GetData();
+                DisplayInfo();
+            }
+        }
+
+
+
+        /// Confirm Registration
+        /// Exports to file
+        private void confirm_Click(object sender, EventArgs e)
+        {
+            if (FileOpen() == false)
+            {
+                System.Threading.Thread.Sleep(500);// Time for closure to register on system, prevents exception when opening the file
+                ExportData();
             }
         }
 
