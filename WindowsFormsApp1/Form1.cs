@@ -27,6 +27,8 @@ namespace WindowsFormsApp1
          * CityGymRegistration is a registration form for a 
          * fake gym. This form enables the collection of
          * customer details and adding to a .csv file.
+         * Code is stored at:
+         * https://github.com/ahyou-mug/CityGymRegistrationApp
          
              * * RunTime NOTE 1:
              * * Please set file path to appropriate location
