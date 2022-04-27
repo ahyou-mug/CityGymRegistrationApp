@@ -54,7 +54,30 @@ namespace WindowsFormsApp1
         {
             Dictionary<string, dynamic> cust = new Dictionary<string, dynamic>()
             {
-
+                {"Customer Number", null },
+                {"First Name", null},// assign fname text box to customer.fname property
+                {"Last Name", null},// same
+                {"Phone", null},
+                {"Birthday", null},
+                {"Street Number", null},
+                {"Street Name", null},
+                {"City", null},
+                {"District", null},
+                {"Post Code", null},
+                {"Emergency Contact", null},
+                {"Emergency Phone", null},
+                {"Emergency Relationship", null},
+                {"Membership Type", null},
+                {"Membership Duration", null},
+                {"Payment Frequency", null},
+                {"Payment Method", null},
+                {"Weekly Price", null},
+                {"Weekly Amount", null},
+                {"Payment Amount", null},
+                {"Extras 1", null},
+                {"Extras 2", null},
+                {"Extras 3", null},
+                {"Extras 4", null}
             };
             public Dictionary<string, dynamic> Cust { get => cust; set => cust = value; }
             Dictionary<string, int> prices = new Dictionary<string, int>()
@@ -192,12 +215,19 @@ namespace WindowsFormsApp1
             if (errorCount > 0 || noError == false) // if error count > 0 or error bool false
             {
                 System.Windows.Forms.MessageBox.Show("There are empty sections in registration - please complete to proceed");
-                oCust.Cust.Clear(); // empties customer.dict to prevent key double ups on resubmission
+                Reset(); // empties customer.dict to prevent value double ups on resubmission
             }
             else if (errorCount == 0 && noError == true) // if error count =0 and noerror = true
             {
                 conf = true; // form is valid and ready to submit
             }
+        }
+
+
+
+        private void Reset()
+        {   
+            oCust.Cust.Keys.ToList().ForEach (x => oCust.Cust[x] = null) ;
         }
 
         /* ClearForm
@@ -261,7 +291,7 @@ namespace WindowsFormsApp1
                 x.Text = "";
                 x.BackColor = SystemColors.Control;
             }
-            oCust.Cust.Clear(); // Clears customer dict as no values in form, prevents exception
+            Reset(); // Clears customer dict as no values in form, prevents exception
         }
 
         
@@ -289,7 +319,7 @@ namespace WindowsFormsApp1
             oCust.Cust["Emergency Contact"] = emCon.Text;
             oCust.Cust["Emergency Phone"] = emNum.Text;
             oCust.Cust["Emergency Relationship"] = emRel.Text;
-            oCust.Cust.Add("Weekly Price", 0);
+            //oCust.Cust.Add("Weekly Price", 0);
             // loop through buttons in MembershipType groupbox
             foreach (var rdo in MembershipType.Controls.OfType<RadioButton>())
             {
@@ -340,7 +370,7 @@ namespace WindowsFormsApp1
                 if (rdo.Checked)// if the box is checked
                 {
                     oCust.Cust["Weekly Price"] += (oCust.Prices[rdo.Name]);// adds price to weekly total
-                    oCust.Cust.Add("Extras " + i, oCust.Terms[rdo.Name]);
+                    oCust.Cust["Extras " + i] = oCust.Terms[rdo.Name];
                     i++;
                 }
             }
@@ -471,14 +501,6 @@ namespace WindowsFormsApp1
                 {
                     foreach (var ind in oCust.Cust.Keys)
                     {
-                        if (line1 == "")
-                        {
-                            line1 = ind; // first header item (dict keys)
-                        }
-                        else
-                        {
-                            line1 = (line1 + "," + ind); // append other header item (dict keys)
-                        }
                         if (line2 == "")
                         {
                             line2 = oCust.Cust[ind]; // first customer item with "," to make .csv format
@@ -488,13 +510,12 @@ namespace WindowsFormsApp1
                             line2 = (line2 + "," + oCust.Cust[ind]); // append other customer items with preceeding comma
                         }
                     }
-                    sw.WriteLine(line1); // write keys on line
                     sw.WriteLine(line2); // write customer dict on line below
                     sw.Close(); // close file
                     sw.Dispose();
                     System.Windows.Forms.MessageBox.Show("Success! New Customer Added."); // display successful message
                     this.clearForm(); //clearform
-                    oCust.Cust.Clear();
+                    Reset();
                 }
             }
         }
@@ -507,7 +528,7 @@ namespace WindowsFormsApp1
             Validation(); // validate form
             if (conf) // if form validated then add data to customer.dict
             {
-                oCust.Cust.Clear();
+                Reset();
                 GetData();
                 DisplayInfo();
             }
