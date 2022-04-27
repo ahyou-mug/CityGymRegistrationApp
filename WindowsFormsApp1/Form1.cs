@@ -232,7 +232,7 @@ namespace WindowsFormsApp1
          */
         private void Reset()
         {   
-            oCust.Cust.Keys.ToList().ForEach (x => oCust.Cust[x] = null) ;
+            oCust.Cust.Keys.ToList().ForEach (x => oCust.Cust[x] = null) ; // Creates array of keys, loops through and assigns null
         }
 
 
@@ -326,7 +326,6 @@ namespace WindowsFormsApp1
             oCust.Cust["Emergency Contact"] = emCon.Text;
             oCust.Cust["Emergency Phone"] = emNum.Text;
             oCust.Cust["Emergency Relationship"] = emRel.Text;
-            //oCust.Cust.Add("Weekly Price", 0);
             // loop through buttons in MembershipType groupbox
             foreach (var rdo in MembershipType.Controls.OfType<RadioButton>())
             {
@@ -421,9 +420,9 @@ namespace WindowsFormsApp1
             // display order subtotal and details for checking before submission
             foreach (var key in oCust.Cust.Keys)
             {
-                display1.SelectionFont = new Font(display1.Font, FontStyle.Bold);
+                display1.SelectionFont = new Font(display1.Font, FontStyle.Bold); // formats dict.key as bold
                 display1.SelectedText += key + ":\n";
-                display1.SelectionFont = new Font(display1.Font, FontStyle.Regular);
+                display1.SelectionFont = new Font(display1.Font, FontStyle.Regular); // formats  key.value as regular
                 display1.SelectedText += oCust.Cust[key] + "\n";
             }
         }
