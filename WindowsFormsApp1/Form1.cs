@@ -225,10 +225,17 @@ namespace WindowsFormsApp1
 
 
 
+        /* Rest
+         * Resets values in dictionary
+         * Leaves Keys
+         * Ensures that file always has the same headers
+         */
         private void Reset()
         {   
             oCust.Cust.Keys.ToList().ForEach (x => oCust.Cust[x] = null) ;
         }
+
+
 
         /* ClearForm
         // Checks the controls in the form
@@ -528,9 +535,9 @@ namespace WindowsFormsApp1
             Validation(); // validate form
             if (conf) // if form validated then add data to customer.dict
             {
-                Reset();
-                GetData();
-                DisplayInfo();
+                Reset(); // clear values in dict
+                GetData(); // assign form values to dict
+                DisplayInfo(); // display key:value pairs formatted in RTB
             }
         }
 
