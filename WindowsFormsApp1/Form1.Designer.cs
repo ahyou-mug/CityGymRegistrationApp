@@ -5,12 +5,13 @@
         /// <summary>
         /// Required designer variable.
         /// </summary>
+        ///[assembly: AssemblyVersionAttribute("2.0.1")]
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name = "disposing" > true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))

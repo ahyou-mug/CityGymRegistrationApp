@@ -402,16 +402,18 @@ namespace WindowsFormsApp1
         */
         private bool FileOpen()
         {
-            try // try to access file
+            if (File.Exists(path))
             {
-                FileStream fs = new FileStream(path, FileMode.Append, FileAccess.Write);
-                StreamWriter sw = new StreamWriter(fs);
-                sw.Close();
-            }
-            catch (System.IO.IOException) // if cannot access file display errror
-            {
-                System.Windows.Forms.MessageBox.Show("Error! File is already in use! Please close the file and try again."); // display erorr message
-                return true;
+                try // try to access file
+                {
+                    FileStream fs = new FileStream(path, FileMode.Append, FileAccess.Write);
+                    StreamWriter sw = new StreamWriter(fs);
+                    sw.Close();
+                }
+                catch
+                {
+                    return true;
+                }
             }
             return false; // if can access file then file not open
         }
@@ -458,6 +460,7 @@ namespace WindowsFormsApp1
                 sw.WriteLine(line1); // write headers to file
                 sw.WriteLine(line2); // write customer to file
                 sw.Close(); // close file
+                sw.Dispose();
                 System.Windows.Forms.MessageBox.Show("Success! New Customer Added."); // display success message
                 this.clearForm(); //clear form
             }
@@ -488,6 +491,7 @@ namespace WindowsFormsApp1
                     sw.WriteLine(line1); // write keys on line
                     sw.WriteLine(line2); // write customer dict on line below
                     sw.Close(); // close file
+                    sw.Dispose();
                     System.Windows.Forms.MessageBox.Show("Success! New Customer Added."); // display successful message
                     this.clearForm(); //clearform
                     oCust.Cust.Clear();
@@ -515,10 +519,14 @@ namespace WindowsFormsApp1
         /// Exports to file
         private void confirm_Click(object sender, EventArgs e)
         {
-            if (FileOpen() == false)
+            if (conf == true && FileOpen() == false)
             {
                 System.Threading.Thread.Sleep(500);// Time for closure to register on system, prevents exception when opening the file
                 ExportData();
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("File is open already or order has not been confirmed");
             }
         }
 
