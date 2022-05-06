@@ -56,6 +56,8 @@ namespace WindowsFormsApp1 {
         
         private global::System.Data.DataRelation relationmemberships_payment_type;
         
+        private global::System.Data.DataRelation relationbase_class_bookings;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -407,6 +409,7 @@ namespace WindowsFormsApp1 {
             this.relationmemberships_payment_freq = this.Relations["memberships_payment_freq"];
             this.relationmemberships_duration = this.Relations["memberships_duration"];
             this.relationmemberships_payment_type = this.Relations["memberships_payment_type"];
+            this.relationbase_class_bookings = this.Relations["base_class_bookings"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -467,6 +470,10 @@ namespace WindowsFormsApp1 {
                         this.tablememberships.Payment_MethodColumn}, new global::System.Data.DataColumn[] {
                         this.tablepayment_type.pay_typeColumn}, false);
             this.Relations.Add(this.relationmemberships_payment_type);
+            this.relationbase_class_bookings = new global::System.Data.DataRelation("base_class_bookings", new global::System.Data.DataColumn[] {
+                        this.tablebase_class.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablebookings.IDColumn}, false);
+            this.Relations.Add(this.relationbase_class_bookings);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1848,6 +1855,8 @@ namespace WindowsFormsApp1 {
             
             private global::System.Data.DataColumn columnMembership_ID;
             
+            private global::System.Data.DataColumn columnID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bookingsDataTable() {
@@ -1907,6 +1916,14 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1942,17 +1959,21 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bookingsRow AddbookingsRow(all_classesRow parentall_classesRowByall_classes_bookings, string Booking_ID, membershipsRow parentmembershipsRowBymemberships_bookings) {
+            public bookingsRow AddbookingsRow(all_classesRow parentall_classesRowByall_classes_bookings, string Booking_ID, membershipsRow parentmembershipsRowBymemberships_bookings, base_classRow parentbase_classRowBybase_class_bookings) {
                 bookingsRow rowbookingsRow = ((bookingsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Booking_ID,
+                        null,
                         null};
                 if ((parentall_classesRowByall_classes_bookings != null)) {
                     columnValuesArray[0] = parentall_classesRowByall_classes_bookings[0];
                 }
                 if ((parentmembershipsRowBymemberships_bookings != null)) {
                     columnValuesArray[2] = parentmembershipsRowBymemberships_bookings[0];
+                }
+                if ((parentbase_classRowBybase_class_bookings != null)) {
+                    columnValuesArray[3] = parentbase_classRowBybase_class_bookings[0];
                 }
                 rowbookingsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowbookingsRow);
@@ -1979,6 +2000,7 @@ namespace WindowsFormsApp1 {
                 this.columnClass_ID = base.Columns["Class ID"];
                 this.columnBooking_ID = base.Columns["Booking ID"];
                 this.columnMembership_ID = base.Columns["Membership ID"];
+                this.columnID = base.Columns["ID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1990,6 +2012,8 @@ namespace WindowsFormsApp1 {
                 base.Columns.Add(this.columnBooking_ID);
                 this.columnMembership_ID = new global::System.Data.DataColumn("Membership ID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMembership_ID);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4395,6 +4419,17 @@ namespace WindowsFormsApp1 {
                     return ((all_classesRow[])(base.GetChildRows(this.Table.ChildRelations["FitnessClasses_Recurring"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bookingsRow[] GetbookingsRows() {
+                if ((this.Table.ChildRelations["base_class_bookings"] == null)) {
+                    return new bookingsRow[0];
+                }
+                else {
+                    return ((bookingsRow[])(base.GetChildRows(this.Table.ChildRelations["base_class_bookings"])));
+                }
+            }
         }
         
         /// <summary>
@@ -4638,6 +4673,22 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ID {
+                get {
+                    try {
+                        return ((string)(this[this.tablebookings.IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'bookings\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablebookings.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public all_classesRow all_classesRow {
                 get {
                     return ((all_classesRow)(this.GetParentRow(this.Table.ParentRelations["all_classes_bookings"])));
@@ -4655,6 +4706,17 @@ namespace WindowsFormsApp1 {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["memberships_bookings"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public base_classRow base_classRow {
+                get {
+                    return ((base_classRow)(this.GetParentRow(this.Table.ParentRelations["base_class_bookings"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["base_class_bookings"]);
                 }
             }
             
@@ -4692,6 +4754,18 @@ namespace WindowsFormsApp1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetMembership_IDNull() {
                 this[this.tablebookings.Membership_IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsIDNull() {
+                return this.IsNull(this.tablebookings.IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetIDNull() {
+                this[this.tablebookings.IDColumn] = global::System.Convert.DBNull;
             }
         }
         
